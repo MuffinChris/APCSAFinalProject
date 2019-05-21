@@ -1,4 +1,4 @@
-package user;
+package network;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,8 +7,6 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
-
-import network.Server;
 
 public class UserClient implements Runnable {
 
