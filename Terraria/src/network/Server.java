@@ -40,7 +40,6 @@ public class Server {
 	
 	public void listen() {
 		clients = new ArrayList<ClientThread>();
-		currentId++;
 		try {
 			System.out.println("Listening for clients.");
 			server = new ServerSocket(port);
@@ -59,6 +58,7 @@ public class Server {
 				Thread thread = new Thread(w);
 				thread.start();
 				System.out.println(">> Created new Client Thread");
+				currentId++;
 				PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
 				output.println("You have joined the Server! Welcome!!!");
 			} catch (Exception e) {

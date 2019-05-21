@@ -10,6 +10,12 @@ import java.util.Scanner;
 
 public class UserClient implements Runnable {
 
+	private String host;
+	
+	public UserClient(String host) {
+		this.host = host;
+	}
+	
 	public static void main(String[] args) throws IOException {
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("Enter a Hostname Address: ");
@@ -25,7 +31,7 @@ public class UserClient implements Runnable {
 		//System.out.println("Server: " + input.nextLine());
 		PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
 		//Scanner sockscan = new Scanner(socket.getInputStream());
-		Thread t = new Thread(new UserClient());
+		Thread t = new Thread(new UserClient(hostname));
 		t.start();
 		while (true) {
 			//BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -44,7 +50,7 @@ public class UserClient implements Runnable {
 		Socket socket;
 		System.out.println("Runnable Created");
 		try {
-			socket = new Socket("localhost", 4321);
+			socket = new Socket(host, 4321);
 			while (true) {
 				Scanner sockscan = new Scanner(socket.getInputStream());
 				System.out.println(sockscan.nextLine());
