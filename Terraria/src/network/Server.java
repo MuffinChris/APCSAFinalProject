@@ -68,14 +68,16 @@ public class Server {
 		}
 	}
 	
-	public void globalMessage(String s, ClientThread exclude) {
-		for (ClientThread ct : clients) {
-			if (!ct.equals(exclude) && ct.isOpen()) {
-				try {
-					PrintWriter outputCT = new PrintWriter(ct.getClient().getSocket().getOutputStream(), true);
-					outputCT.println(s);
-				} catch (IOException e) {
-					e.printStackTrace();
+	public void globalMessage(String s, ClientThread exclude, boolean open) {
+		if (open) {
+			for (ClientThread ct : clients) {
+				if (!ct.equals(exclude) && ct.isOpen()) {
+					try {
+						PrintWriter outputCT = new PrintWriter(ct.getClient().getSocket().getOutputStream(), true);
+						outputCT.println(s);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		}

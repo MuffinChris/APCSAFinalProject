@@ -39,7 +39,7 @@ public class ClientThread implements Runnable {
 				output = new PrintWriter(client.getSocket().getOutputStream(), true);
 				s = input.readLine();
 				output.println(s);
-				server.globalMessage(s, this);
+				server.globalMessage(s, this, open);
 				text.append(s + "\n");
 			} catch (Exception e) {
 				e.printStackTrace();
