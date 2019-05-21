@@ -11,11 +11,13 @@ public class ClientThread implements Runnable {
 	private Client client;
 	private JTextArea text;
 	private boolean open;
+	private Server server;
 	
-	public ClientThread (Client client, JTextArea text) {
+	public ClientThread (Client client, JTextArea text, Server server) {
 		this.client = client;
 		this.text = text;
 		open = true;
+		this.server = server;
 	}
 	
 	public Client getClient() {
@@ -27,19 +29,16 @@ public class ClientThread implements Runnable {
 		String s;
 		BufferedReader input = null;
 		PrintWriter output = null;
-		try {
-			input = new BufferedReader(new InputStreamReader(client.getSocket().getInputStream()));
-			output = new PrintWriter(client.getSocket().getOutputStream(), true);
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.exit(-1);
-		}
-		while (true) {
+		while (open) {
 			try {
+				input = new BufferedReader(new InputStreamReader(client.getSocket().getInputStream()));
+				output = new PrintWriter(client.getSocket().getOutputStream(), true);
 				s = input.readLine();
 				output.println(s);
-				text.append(s);
+				server.globalMessage(s, this);
+				text.append(s + "\n");
 			} catch (Exception e) {
+				e.printStackTrace();
 				finalize();
 			}
 		}
