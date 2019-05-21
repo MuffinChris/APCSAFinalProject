@@ -8,6 +8,8 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
+import network.Server;
+
 public class UserClient implements Runnable {
 
 	private String host;
@@ -26,7 +28,7 @@ public class UserClient implements Runnable {
 			System.out.println("Invalid Hostname Arguments");
 			return;
 		}
-		Socket socket = new Socket(hostname, 4321);
+		Socket socket = new Socket(hostname, Server.port);
 		//Scanner input = new Scanner(socket.getInputStream());
 		//System.out.println("Server: " + input.nextLine());
 		PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
@@ -50,7 +52,7 @@ public class UserClient implements Runnable {
 		Socket socket;
 		System.out.println("Runnable Created");
 		try {
-			socket = new Socket(host, 4321);
+			socket = new Socket(host, Server.port);
 			while (true) {
 				Scanner sockscan = new Scanner(socket.getInputStream());
 				System.out.println(sockscan.nextLine());

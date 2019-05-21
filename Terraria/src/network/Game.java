@@ -1,4 +1,4 @@
-package graphics;
+package network;
 
 import java.awt.Graphics;
 import java.io.IOException;
@@ -8,14 +8,10 @@ import java.net.UnknownHostException;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
-import network.Client;
-import network.ClientThread;
-import network.Server;
-
 public class Game extends JFrame implements Runnable {
 
-	public static final int WIDTH = 1600;
-	public static final int HEIGHT = 900;
+	public static final int WIDTH = 600;
+	public static final int HEIGHT = 400;
 	private Server server;
 	
 	public Game() {
