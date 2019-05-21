@@ -24,6 +24,10 @@ public class ClientThread implements Runnable {
 		return client;
 	}
 
+	public boolean isOpen() {
+		return open;
+	}
+	
 	@Override
 	public void run() {
 		String s;
