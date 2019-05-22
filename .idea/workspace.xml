@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5c1544b-57b7-42cf-9d32-b6d5339f62f0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/aiden.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Terraria/src/Block.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Terraria/src/BlockType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Terraria/src/Location.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Terraria/src/TerrariaGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Terraria/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Terraria/src/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Terraria/src/TerrariaGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/Terraria/src/TerrariaGame.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/Terraria/bin/" />
@@ -52,8 +46,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Terraria/src/TerrariaGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+            <state relative-caret-position="195">
+              <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -338,8 +332,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Terraria/src/TerrariaGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+        <state relative-caret-position="195">
+          <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

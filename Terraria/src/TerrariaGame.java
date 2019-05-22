@@ -21,7 +21,12 @@ public class TerrariaGame extends Canvas implements Runnable {
             big = (BufferedImage)(createImage(getWidth(),getHeight()));
         Graphics gDBIG = big.createGraphics();
         block.draw(gDBIG);
-        System.out.println("paint time");
+
+
+        //insert drawin here
+
+
+
         gD.drawImage(big, null, 0, 0);
     }
 
