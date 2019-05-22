@@ -29,9 +29,9 @@ public class ClientThread implements Runnable {
 	@Override
 	public void run() {
 		String s;
-		BufferedReader input = null;
-		PrintWriter output = null;
 		while (open) {
+			BufferedReader input = null;
+			PrintWriter output = null;
 			try {
 				input = new BufferedReader(new InputStreamReader(client.getSocket().getInputStream()));
 				output = new PrintWriter(client.getSocket().getOutputStream(), true);
