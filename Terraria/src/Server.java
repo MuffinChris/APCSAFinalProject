@@ -69,10 +69,10 @@ public class Server {
 			for (ClientThread ct : clients) {
 				if (!ct.equals(exclude) && ct.isOpen()) {
 					try {
-						if (ct.getClient().getSocket() != null && ct.getClient().getSocket().getOutputStream() != null) {
+						//if (ct.getClient().getSocket() != null && ct.getClient().getSocket().getOutputStream() != null) {
 							PrintWriter outputCT = new PrintWriter(ct.getClient().getSocket().getOutputStream(), true);
 							outputCT.println(s);
-						}
+						//}
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
