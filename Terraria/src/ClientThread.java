@@ -51,6 +51,8 @@ public class ClientThread implements Runnable {
 			try {
 				open = false;
 				System.out.println(">> Closed Socket || Client ID: " + client.getID());
+				client.getSocket().getOutputStream().close();
+				client.getSocket().getInputStream().close();
 				client.getSocket().close();
 			} catch (Exception e) {
 				System.out.println("Failed to close socket || Client ID: " + client.getID());
