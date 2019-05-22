@@ -1,10 +1,3 @@
-package network;
-
-import java.awt.Graphics;
-import java.io.IOException;
-import java.net.Socket;
-import java.net.UnknownHostException;
-
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
