@@ -53,11 +53,14 @@ public class UserClient implements Runnable {
 						Scanner sockscan = new Scanner(socket.getInputStream());
 						//if (sockscan.nextLine() instanceof String) {
 						//if (sockscan.hasNextLine()) {
-					if (sockscan.nextLine().contains("Your Client ID")) {
-						id = Integer.valueOf(sockscan.nextLine().replace("Your Client ID is: ",""));
+					System.out.println("sockscannin");
+					String s = sockscan.nextLine();
+					if (s.contains("Your Client ID")) {
+						id = Integer.valueOf(s.replace("Your Client ID is: ",""));
 					} else {
-						System.out.println(sockscan.nextLine());
+						System.out.println(s);
 					}
+					System.out.println("sockscannindonefo");
 						//sockscan.close();
 					//}
 				}
