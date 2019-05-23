@@ -45,8 +45,8 @@ public class UserClient implements Runnable {
 	public void run() {
 		System.out.println("Runnable Created");
 		try {
-			if (new Socket(host, Server.port) instanceof Socket) {
-				socket = new Socket(host, Server.port);
+			if (socket instanceof Socket) {
+				//socket = new Socket(host, Server.port);
 				while (true) {
 					//if (socket != null && socket.getInputStream() != null) {
 						Scanner sockscan = new Scanner(socket.getInputStream());

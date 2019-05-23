@@ -68,6 +68,9 @@ public class Server {
 		if (open) {
 			PrintWriter outputCT = null;
 			System.out.println(s);
+			//if (s == null) {
+			//	return;
+			//}
 			for (ClientThread ct : clients) {
 				if (!ct.equals(exclude) && ct.isOpen()) {
 					try {
