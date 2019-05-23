@@ -57,6 +57,7 @@ public class Server {
 				currentId++;
 				PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
 				output.println("You have joined the Server! Welcome!!!");
+				output.close();
 			} catch (Exception e) {
 				System.out.println("ClientThread could not be initialized on " + port);
 				System.exit(-1);
@@ -66,18 +67,21 @@ public class Server {
 	
 	public void globalMessage(String s, ClientThread exclude, boolean open) {
 		if (open) {
+			PrintWriter outputCT = null;
 			for (ClientThread ct : clients) {
 				if (!ct.equals(exclude) && ct.isOpen()) {
 					try {
 						//if (ct.getClient().getSocket() != null && ct.getClient().getSocket().getOutputStream() != null) {
-							PrintWriter outputCT = new PrintWriter(ct.getClient().getSocket().getOutputStream(), true);
-							outputCT.println(s);
+						outputCT = new PrintWriter(ct.getClient().getSocket().getOutputStream(), true);
+						outputCT.println(s);
+
 						//}
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
 				}
 			}
+			outputCT.close();
 		}
 	}
 	

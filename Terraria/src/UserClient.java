@@ -51,8 +51,9 @@ public class UserClient implements Runnable {
 					//if (socket != null && socket.getInputStream() != null) {
 						Scanner sockscan = new Scanner(socket.getInputStream());
 						//if (sockscan.nextLine() instanceof String) {
+						if (sockscan.hasNextLine()) {
 							System.out.println(sockscan.nextLine());
-						//}
+						}
 					//}
 				}
 			}
