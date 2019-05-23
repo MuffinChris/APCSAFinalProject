@@ -68,9 +68,9 @@ public class Server {
 	public void globalMessage(String s, ClientThread exclude, boolean open) {
 		if (open) {
 			PrintWriter outputCT = null;
-			if (s == null) {
-				return;
-			}
+			//if (s == null) {
+			//	return;
+			//}
 			for (ClientThread ct : clients) {
 				if (!ct.equals(exclude) && ct.isOpen()) {
 					try {
