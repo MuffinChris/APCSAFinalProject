@@ -55,9 +55,9 @@ public class UserClient implements Runnable {
 						//if (sockscan.hasNextLine()) {
 					if (sockscan.nextLine().contains("Your Client ID")) {
 						id = Integer.valueOf(sockscan.nextLine().replace("Your Client ID is: ",""));
+					} else {
+						System.out.println(sockscan.nextLine());
 					}
-							System.out.println(sockscan.nextLine());
-						//}
 						//sockscan.close();
 					//}
 				}
