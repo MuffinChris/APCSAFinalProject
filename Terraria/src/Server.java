@@ -67,17 +67,16 @@ public class Server {
 	public void globalMessage(String s, ClientThread exclude, boolean open) {
 		if (open) {
 			PrintWriter outputCT = null;
-			System.out.println(s);
-			//if (s == null) {
-			//	return;
-			//}
+			if (s == null) {
+				return;
+			}
 			for (ClientThread ct : clients) {
 				if (!ct.equals(exclude) && ct.isOpen()) {
 					try {
 						//if (ct.getClient().getSocket() != null && ct.getClient().getSocket().getOutputStream() != null) {
 						outputCT = new PrintWriter(ct.getClient().getSocket().getOutputStream(), true);
 						outputCT.println(s);
-						System.out.println("USER: " + s);
+						System.out.println(s);
 
 						//}
 					} catch (IOException e) {
