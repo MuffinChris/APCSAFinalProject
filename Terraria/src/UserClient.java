@@ -54,7 +54,7 @@ public class UserClient implements Runnable {
 						//if (sockscan.hasNextLine()) {
 							System.out.println(sockscan.nextLine());
 						//}
-						sockscan.close();
+						//sockscan.close();
 					//}
 				}
 			}
