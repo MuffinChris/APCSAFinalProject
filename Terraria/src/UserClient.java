@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class UserClient implements Runnable {
 
 	private String host;
+	private static Socket socket;
 	
 	public UserClient(String host) {
 		this.host = host;
@@ -21,7 +22,7 @@ public class UserClient implements Runnable {
 			System.out.println("Invalid Hostname Arguments");
 			return;
 		}
-		Socket socket = new Socket(hostname, Server.port);
+		socket = new Socket(hostname, Server.port);
 		//Scanner input = new Scanner(socket.getInputStream());
 		//System.out.println("Server: " + input.nextLine());
 		PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
@@ -42,7 +43,6 @@ public class UserClient implements Runnable {
 	
 	@Override
 	public void run() {
-		Socket socket;
 		System.out.println("Runnable Created");
 		try {
 			if (new Socket(host, Server.port) instanceof Socket) {
@@ -60,6 +60,16 @@ public class UserClient implements Runnable {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+
+	@Override
+	protected void finalize() {
+		try {
+			socket.close();
+		} catch (Exception e) {
+			System.out.println("Failed to close socket");
+			System.exit(-1);
 		}
 	}
 }
