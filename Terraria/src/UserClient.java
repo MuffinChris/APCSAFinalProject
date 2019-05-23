@@ -7,6 +7,7 @@ public class UserClient implements Runnable {
 
 	private String host;
 	private static Socket socket;
+	private int id;
 	
 	public UserClient(String host) {
 		this.host = host;
@@ -52,6 +53,9 @@ public class UserClient implements Runnable {
 						Scanner sockscan = new Scanner(socket.getInputStream());
 						//if (sockscan.nextLine() instanceof String) {
 						//if (sockscan.hasNextLine()) {
+					if (sockscan.nextLine().contains("Your Client ID")) {
+						id = Integer.valueOf(sockscan.nextLine().replace("Your Client ID is: ",""));
+					}
 							System.out.println(sockscan.nextLine());
 						//}
 						//sockscan.close();
@@ -66,6 +70,8 @@ public class UserClient implements Runnable {
 	@Override
 	protected void finalize() {
 		try {
+			PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
+			output.println("CLOSE CLIENT ID: " + id);
 			socket.close();
 		} catch (Exception e) {
 			System.out.println("Failed to close socket");

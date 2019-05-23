@@ -35,6 +35,14 @@ public class ClientThread implements Runnable {
 			try {
 				input = new BufferedReader(new InputStreamReader(client.getSocket().getInputStream()));
 				output = new PrintWriter(client.getSocket().getOutputStream(), true);
+				int id;
+				if (input.readLine().contains("CLOSE CLIENT ID")) {
+					id = Integer.valueOf(input.readLine().replace("CLOSE CLIENT ID: ", ""));
+					if (getClient().getID() == id) {
+						getClient().getSocket().close();
+						open = false;
+					}
+				}
 				s = input.readLine();
 				output.println(s);
 				server.globalMessage(s, this, open);

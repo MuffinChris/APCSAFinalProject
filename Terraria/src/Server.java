@@ -53,10 +53,11 @@ public class Server {
 				clients.add(w);
 				Thread thread = new Thread(w);
 				thread.start();
-				System.out.println(">> Created new Client Thread");
-				currentId++;
+				System.out.println(">> Created new Client Thread (" + w.getClient().getID() + ")");
 				PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
 				output.println("You have joined the Server! Welcome!!!");
+				output.println("Your Client ID is: " + currentId);
+				currentId++;
 			} catch (Exception e) {
 				System.out.println("ClientThread could not be initialized on " + port);
 				System.exit(-1);
