@@ -24,7 +24,6 @@ public class Block {
         int height = Game.HEIGHT / 16;
         int x = location.getX() * width;
         int y = location.getY() * height;
-        System.out.println(x + " " + y + " " + width + " " + height);
         window.setColor(Color.GREEN);
         window.fillRect(x,y,width,height);
     }
