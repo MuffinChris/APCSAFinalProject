@@ -57,7 +57,6 @@ public class Server {
 				currentId++;
 				PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
 				output.println("You have joined the Server! Welcome!!!");
-				output.close();
 			} catch (Exception e) {
 				System.out.println("ClientThread could not be initialized on " + port);
 				System.exit(-1);
