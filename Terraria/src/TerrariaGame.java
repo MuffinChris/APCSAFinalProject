@@ -7,7 +7,7 @@ public class TerrariaGame extends Canvas implements Runnable {
 
     public TerrariaGame() {
         setBackground(Color.CYAN);
-        block = new Block(new BlockType("Grass"), new Location(10, 10));
+        //block = new Block(new BlockType("Grass"), new Location(10, 10));
         setVisible(true);
     }
 
