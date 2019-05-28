@@ -9,9 +9,9 @@ CLASSES = \
 	MovingThing.java \
 	Player.java \
 	Block.java \
-	BlockList.java \
-	Game.java \
-	GameRunner.java 
+	BlockType.java \
+	GameRunner.java \
+	Game.java 
 
 default: classes
 
