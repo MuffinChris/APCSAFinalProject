@@ -13,8 +13,8 @@ public class Game extends Canvas implements KeyListener, Runnable {
   private Player player;
   private Block background;
   private Block blockOne;
-  private BlockList blockList;
-  private BlockList inventoryList;
+  private BlockType blockList;
+  private BlockType inventoryList;
 
   private int numDirt;
   private int screenWidth;
@@ -28,8 +28,8 @@ public class Game extends Canvas implements KeyListener, Runnable {
     numDirt = 0;
     screenWidth = width; //access width of screen
     screenHeight = height-23; //access height of screen
-    blockList = new BlockList();
-    inventoryList = new BlockList();
+    blockList = new BlockType();
+    inventoryList = new BlockType();
     
     setBackground(Color.black);
     keys = new boolean[4];

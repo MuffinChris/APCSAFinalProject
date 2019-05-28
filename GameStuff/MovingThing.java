@@ -1,12 +1,8 @@
-//(c) A+ Computer Science
-//www.apluscompsci.com
-//Name -
-
 import java.awt.Color;
 import java.awt.Graphics;
 
-public abstract class MovingThing implements Moveable 
-{
+public abstract class MovingThing implements Moveable {
+
   private int xPos;
   private int yPos;
   private int width;
@@ -100,4 +96,5 @@ public abstract class MovingThing implements Moveable
   {
     return getX() + " " + getY() + " " + getWidth() + " " + getHeight();
   }
+  
 }
