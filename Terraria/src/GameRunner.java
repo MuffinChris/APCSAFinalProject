@@ -3,16 +3,18 @@ import java.awt.Component;
 
 public class GameRunner extends JFrame implements Runnable {
 
-  public static void main(String args[]) {
-    GameRunner run = new GameRunner();
-    //Game run = new Game();
-    Thread thread = new Thread(run);
-    thread.start();
-  }
-
   public static final int WIDTH = 1200;
   public static final int HEIGHT = 800;
-  private Server server;
+  private UserClient client;
+
+  public UserClient getClient() {
+    return client;
+  }
+
+  public static void main(String[] args) {
+    GameRunner game = new GameRunner();
+  }
+
 
   public GameRunner() {
     super("Terraria Java");
@@ -25,9 +27,6 @@ public class GameRunner extends JFrame implements Runnable {
     //world.start();
 
     getContentPane().add(textArea);
-    //getContentPane().add(TGame);
-
-    server = new Server(textArea);
 
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setSize(WIDTH,HEIGHT);
@@ -39,10 +38,16 @@ public class GameRunner extends JFrame implements Runnable {
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setVisible(true);
 
+    /*Thread t = new Thread(this);
+    t.start();*/
+    client = new UserClient();
+    theGame.setClient(client);
+
   }
 
+  @Override
   public void run() {
-    server.listen();
+    client = new UserClient();
   }
 
 }

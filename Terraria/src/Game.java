@@ -1,4 +1,6 @@
 import static java.lang.Character.*;
+
+import java.net.URL;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import java.awt.event.*;
@@ -23,8 +25,15 @@ public class Game extends Canvas implements KeyListener, Runnable {
   private boolean[] keys;
   private BufferedImage back;
   //private int count = 0;
+  private UserClient client;
+
+  public void setClient(UserClient c) {
+    System.out.println("CLIENT SET");
+    client = c;
+  }
 
   public Game(int width, int height) {
+
     numDirt = 0;
     screenWidth = width; //access width of screen
     screenHeight = height-23; //access height of screen
@@ -34,7 +43,7 @@ public class Game extends Canvas implements KeyListener, Runnable {
     setBackground(Color.black);
     keys = new boolean[4];
 
-    player = new Player(0, height-175, 50, 50, 1);
+    player = new Player(0, height-175, 50, 50, 1, null);
     background = new Block(0, 0, width, height, 1);
     
     blockOne = new Block(100, 300, 50, 50, 1, "dirt");
@@ -58,6 +67,12 @@ public class Game extends Canvas implements KeyListener, Runnable {
   }
 
   public void paint(Graphics window) {
+
+    if (!(client instanceof UserClient)) {
+      return;
+    }
+    player.setClient(client);
+
     Graphics2D twoDGraph = (Graphics2D)window;
 
     if(back==null) 
@@ -67,6 +82,11 @@ public class Game extends Canvas implements KeyListener, Runnable {
     background.draw(graphToBack);
 
     Graphics inventoryBox = back.createGraphics();
+
+    if (!(client.getWindow() instanceof Graphics)) {
+      client.setWindow(graphToBack);
+    }
+
     inventoryBox.setColor(new Color (34, 139, 34));
     inventoryBox.fillRect(0,0,140,140);
 

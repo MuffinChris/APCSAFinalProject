@@ -9,9 +9,11 @@ public class Player extends MovingThing {
 
   private int speed;
   private Image image;
+  private UserClient client;
+  private String direction;
 
   public Player(){
-    this(10,10,10,10,10);
+    this(10,10,10,10,10, null);
   }
 
   public Player(int x, int y){
@@ -23,9 +25,10 @@ public class Player extends MovingThing {
     speed = s;
   }
 
-  public Player(int x, int y, int w, int h, int s){
+  public Player(int x, int y, int w, int h, int s, UserClient client){
     super(x, y, w, h);
     speed=s;
+    this.client = client;
     try{
       URL url = getClass().getResource("playerLeft.png");
       image = ImageIO.read(url);
@@ -40,6 +43,10 @@ public class Player extends MovingThing {
 
   public int getSpeed(){
     return speed;
+  }
+
+  public void setClient(UserClient client) {
+    this.client = client;
   }
 
   public void move(String direction)
@@ -68,10 +75,12 @@ public class Player extends MovingThing {
     else if (direction.equals("DOWN")) {
       setY(getY()+speed); 
     }
+    this.direction = direction;
   }
 
   public void draw( Graphics window ){
     window.drawImage(image,getX(),getY(),getWidth(),getHeight(),null);
+    client.broadcastMessage(client.getName() + "," + "moved to " + getX() + "[]" + getY() + "][" + direction);
   }
 
   public String toString(){
