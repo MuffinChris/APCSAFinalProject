@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.Component;
+import java.awt.event.WindowEvent;
 
 public class GameRunner extends JFrame implements Runnable {
 
@@ -37,11 +38,12 @@ public class GameRunner extends JFrame implements Runnable {
     getContentPane().add(theGame);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setVisible(true);
-
+    setState(JFrame.ICONIFIED);
     /*Thread t = new Thread(this);
     t.start();*/
     client = new UserClient();
     theGame.setClient(client);
+    setState(JFrame.NORMAL);
 
   }
 

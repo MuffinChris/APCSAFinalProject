@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5c1544b-57b7-42cf-9d32-b6d5339f62f0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Terraria/src/UserClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/Terraria/src/UserClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Terraria/src/UserClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Terraria/src/UserClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Terraria/src/GameRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/Terraria/src/GameRunner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Terraria/src/GameRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/Terraria/src/GameRunner.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/Terraria/bin/" />
@@ -56,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Terraria/src/GameRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="42" column="30" lean-forward="true" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
+            <state relative-caret-position="274">
+              <caret line="45" column="27" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#234#235#0" expanded="true" />
@@ -74,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Terraria/src/UserClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="92" column="19" selection-start-line="92" selection-start-column="19" selection-end-line="92" selection-end-column="19" />
+            <state relative-caret-position="330">
+              <caret line="112" column="5" lean-forward="true" selection-start-line="112" selection-start-column="5" selection-end-line="112" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#380#381#0" expanded="true" />
@@ -140,8 +139,8 @@
       <find>paint</find>
       <find>Thread</find>
       <find>CLIENT SET</find>
-      <find>CLIENT S</find>
       <find>setClient</find>
+      <find>CLIENT S</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -162,11 +161,11 @@
         <option value="$PROJECT_DIR$/Terraria/src/adellegame/GameRunner.java" />
         <option value="$PROJECT_DIR$/Terraria/src/TerrariaGame.java" />
         <option value="$PROJECT_DIR$/Terraria/src/GameServer.java" />
-        <option value="$PROJECT_DIR$/Terraria/src/GameRunner.java" />
         <option value="$PROJECT_DIR$/Terraria/src/Player.java" />
         <option value="$PROJECT_DIR$/Terraria/src/DrawPlayer.java" />
         <option value="$PROJECT_DIR$/Terraria/src/Game.java" />
         <option value="$PROJECT_DIR$/Terraria/src/UserClient.java" />
+        <option value="$PROJECT_DIR$/Terraria/src/GameRunner.java" />
       </list>
     </option>
   </component>
@@ -507,26 +506,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Terraria/src/GameRunner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="42" column="30" lean-forward="true" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#234#235#0" expanded="true" />
-            <element signature="e#257#258#0" expanded="true" />
-            <element signature="e#226#227#0" expanded="true" />
-            <element signature="e#269#270#0" expanded="true" />
-            <element signature="e#1115#1116#0" expanded="true" />
-            <element signature="e#1150#1151#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Terraria/src/UserClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="92" column="19" selection-start-line="92" selection-start-column="19" selection-end-line="92" selection-end-column="19" />
+        <state relative-caret-position="330">
+          <caret line="112" column="5" lean-forward="true" selection-start-line="112" selection-start-column="5" selection-end-line="112" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#380#381#0" expanded="true" />
@@ -535,6 +518,22 @@
             <element signature="e#2935#2936#0" expanded="true" />
             <element signature="e#2981#2982#0" expanded="true" />
             <element signature="e#4170#4171#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Terraria/src/GameRunner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="45" column="27" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#234#235#0" expanded="true" />
+            <element signature="e#257#258#0" expanded="true" />
+            <element signature="e#226#227#0" expanded="true" />
+            <element signature="e#269#270#0" expanded="true" />
+            <element signature="e#1115#1116#0" expanded="true" />
+            <element signature="e#1150#1151#0" expanded="true" />
           </folding>
         </state>
       </provider>
