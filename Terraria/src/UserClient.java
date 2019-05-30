@@ -196,7 +196,7 @@ public class UserClient implements Runnable {
 							}
 						}
 
-						if (!has) {
+						if (!has && !getName().equals(name)) {
 							players.add(new DrawPlayer(x, y, name));
 						}
 
