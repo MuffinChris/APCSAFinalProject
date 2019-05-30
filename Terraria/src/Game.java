@@ -1,30 +1,48 @@
 import static java.lang.Character.*;
-
-import java.net.URL;
 import java.util.ArrayList;
-import javax.imageio.ImageIO;
 import java.awt.event.*;
 import java.awt.Image.*;
 import java.awt.image.*;
 import java.awt.*;
 import java.lang.Math;
 import java.lang.Iterable;
+import java.net.URL;
+import java.io.*;
+import java.util.Random;
+import javax.imageio.*;
+import javax.swing.*;
+import java.awt.Graphics;
+import java.io.File;
+import javax.imageio.ImageIO;
+import java.util.List;
 
-public class Game extends Canvas implements KeyListener, Runnable {
+public class Game extends Canvas implements KeyListener, MouseListener, Runnable {
 
+  //player & background
+  private int speed = 2;
   private Player player;
   private Block background;
+  private BufferedImage back;
+
+  //blocks
+  private int numDirt;
+  private int screenWidth;
+  private int screenHeight;
   private Block blockOne;
   private BlockType blockList;
   private BlockType inventoryList;
 
-  private int numDirt;
-  private int screenWidth;
-  private int screenHeight;
-
+  //key listener
   private boolean[] keys;
-  private BufferedImage back;
-  //private int count = 0;
+
+  //mouse listener
+  private int xPos;
+  private int yPos;
+  private String str;
+  private MouseEvent mouseEvent;
+  private boolean mouseClicked;
+
+  //networking  
   private UserClient client;
 
   public void setClient(UserClient c) {
@@ -43,10 +61,10 @@ public class Game extends Canvas implements KeyListener, Runnable {
     setBackground(Color.black);
     keys = new boolean[4];
 
-    player = new Player(0, height-175, 50, 50, 1, null);
-    background = new Block(0, 0, width, height, 1);
+    player = new Player(0, height-175, 50, 50, speed, null);
+    background = new Block(0, 0, width, height, speed);
     
-    blockOne = new Block(100, 300, 50, 50, 1, "dirt");
+    blockOne = new Block(100, 300, 50, 50, speed, "dirt");
     blockList.add(blockOne);
 
     int xPos = blockOne.getX();
@@ -54,12 +72,17 @@ public class Game extends Canvas implements KeyListener, Runnable {
     for (int i = 0; i < 10; i++) {
       xPos = (int)(Math.random()*(screenWidth-20)+1);
       yPos = (int)(Math.random()*(screenHeight-20)+1);
-      blockList.add(new Block(xPos, yPos, 50, 50, 1, "dirt"));
+      blockList.add(new Block(xPos, yPos, 50, 50, speed, "dirt"));
     }
 
     this.addKeyListener(this);
     new Thread(this).start();
     setVisible(true); 
+
+    //mouse stuff
+    this.addMouseListener(this);
+    new Thread(this).start();
+    setVisible(true);
   }
 
   public void update(Graphics window) {
@@ -90,19 +113,21 @@ public class Game extends Canvas implements KeyListener, Runnable {
     inventoryBox.setColor(new Color (34, 139, 34));
     inventoryBox.fillRect(0,0,140,140);
 
+    Graphics clickedBlock = back.createGraphics();
     player.draw(graphToBack);
     blockList.drawEmAll(graphToBack);
 
     graphToBack.drawString("INVENTORY: ", 20, 40 );
     graphToBack.drawString("DIRT x" + numDirt, 20, 70);
-    graphToBack.drawString("WATER x", 20, 90);
+    graphToBack.drawString("STONE x", 20, 90);
 
     if(keys[0] == true && player.getX() >= 0) {
       player.move("LEFT");
       for (int i = blockList.size()-1; i >= 0; i--) {
         if ( player.getY() <= blockList.get(i).getY()+blockList.get(i).getHeight() && 
              player.getY()+player.getHeight() >= blockList.get(i).getY() &&
-             player.getX() == blockList.get(i).getX()+blockList.get(i).getWidth() ) { 
+             player.getX() <= blockList.get(i).getX()+blockList.get(i).getWidth() &&
+             player.getX() >= blockList.get(i).getX()+blockList.get(i).getWidth()-speed-4) { 
           numDirt++;
           inventoryList.add(blockList.get(i));
           blockList.remove(blockList.get(i));
@@ -114,7 +139,8 @@ public class Game extends Canvas implements KeyListener, Runnable {
       for (int i = blockList.size()-1; i > -1; i--) {
         if ( player.getY() <= blockList.get(i).getY()+blockList.get(i).getHeight() && 
              player.getY()+player.getHeight() >= blockList.get(i).getY() &&
-             player.getX()+player.getWidth() == blockList.get(i).getX() ) { 
+             player.getX()+player.getWidth() >= blockList.get(i).getX() &&  
+             player.getX()+player.getWidth() <= blockList.get(i).getX()+speed+4 ) { 
           numDirt++;
           inventoryList.add(blockList.get(i));
           blockList.remove(blockList.get(i));
@@ -126,7 +152,7 @@ public class Game extends Canvas implements KeyListener, Runnable {
       for (int i = blockList.size()-1; i > -1; i--) {
         if ( player.getX() <= blockList.get(i).getX()+blockList.get(i).getWidth() && 
              player.getX()+player.getWidth() >= blockList.get(i).getX() &&
-             player.getY() == blockList.get(i).getY()+blockList.get(i).getHeight() ) { 
+             player.getY() == blockList.get(i).getY()+blockList.get(i).getHeight()+speed+4) { 
           numDirt++;
           inventoryList.add(blockList.get(i));
           blockList.remove(blockList.get(i));
@@ -138,7 +164,7 @@ public class Game extends Canvas implements KeyListener, Runnable {
       for (int i = blockList.size()-1; i > -1; i--) {
         if ( player.getX() <= blockList.get(i).getX()+blockList.get(i).getWidth() && 
              player.getX()+player.getWidth() >= blockList.get(i).getX() &&
-             player.getY()+player.getHeight() == blockList.get(i).getY() ) { 
+             player.getY()+player.getHeight() == blockList.get(i).getY()-speed-4) { 
           numDirt++;
           inventoryList.add(blockList.get(i));
           blockList.remove(blockList.get(i));
@@ -146,20 +172,28 @@ public class Game extends Canvas implements KeyListener, Runnable {
       }
     }
 
-    /*
-    if (keys[4] && count <= 5) {
-      shots.add(new Ammo(ship.getX()+20, ship.getY()-2-count*2, 10, 4, 1));
-      count++;
-    }
-    else if (count > 5 && keys[4]) {
-      count = 0;
-      keys[4] = false;
-    } 
-    */
-
     twoDGraph.drawImage(back, null, 0, 0);
   }
 
+  public void mouseClicked(MouseEvent e) {
+    if (inventoryList.size() == 0) {
+      mouseClicked = false;
+    }
+    else {
+      mouseEvent = e;
+      mouseClicked = true;
+      if (blockList.size() <= inventoryList.size() + 1) {
+        blockList.add(new Block(e.getX(), e.getY(), 50, 50, speed, "dirt"));
+        inventoryList.remove(inventoryList.get(0));
+        numDirt--;
+      }
+    }
+  }
+
+  public void mouseEntered(MouseEvent e) {}
+  public void mouseExited(MouseEvent e) {}
+  public void mousePressed(MouseEvent e) {}
+  public void mouseReleased(MouseEvent e) {}
 
   public void keyPressed(KeyEvent e) {
     if (e.getKeyCode() == KeyEvent.VK_LEFT) {
@@ -200,8 +234,7 @@ public class Game extends Canvas implements KeyListener, Runnable {
     repaint();
   }
 
-  public void keyTyped(KeyEvent e) {
-  }
+  public void keyTyped(KeyEvent e) {}
 
   public void run() {
     try {

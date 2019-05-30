@@ -70,10 +70,10 @@ public class Player extends MovingThing {
       }
     }
     else if (direction.equals("UP")) {
-      setY(getY()-speed); 
+      setY(getY()-speed+1); 
     }
     else if (direction.equals("DOWN")) {
-      setY(getY()+speed); 
+      setY(getY()+speed-1); 
     }
     this.direction = direction;
   }
