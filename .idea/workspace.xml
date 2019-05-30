@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5c1544b-57b7-42cf-9d32-b6d5339f62f0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Terraria/src/DrawPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Terraria/src/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/Terraria/src/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Terraria/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Terraria/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Terraria/src/UserClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/Terraria/src/UserClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Terraria/src/UserClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Terraria/src/UserClient.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/Terraria/bin/" />
@@ -22,15 +17,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Terraria/src/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="89" column="18" selection-start-line="89" selection-start-column="18" selection-end-line="89" selection-end-column="18" />
+            <state relative-caret-position="225">
+              <caret line="174" column="18" selection-start-line="174" selection-start-column="18" selection-end-line="174" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1513#1514#0" expanded="true" />
-                <element signature="e#1536#1537#0" expanded="true" />
+                <element signature="e#2178#2179#0" expanded="true" />
+                <element signature="e#2201#2202#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -77,7 +72,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Terraria/src/UserClient.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="405">
@@ -165,9 +160,9 @@
         <option value="$PROJECT_DIR$/Terraria/src/GameServer.java" />
         <option value="$PROJECT_DIR$/Terraria/src/GameRunner.java" />
         <option value="$PROJECT_DIR$/Terraria/src/Player.java" />
-        <option value="$PROJECT_DIR$/Terraria/src/Game.java" />
         <option value="$PROJECT_DIR$/Terraria/src/DrawPlayer.java" />
         <option value="$PROJECT_DIR$/Terraria/src/UserClient.java" />
+        <option value="$PROJECT_DIR$/Terraria/src/Game.java" />
       </list>
     </option>
   </component>
@@ -268,7 +263,7 @@
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4991119" visible="true" weight="0.25020242" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4991119" visible="true" weight="0.25020242" />
       <window_info id="Structure" order="1" sideWeight="0.5008881" side_tool="true" weight="0.2534413" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -475,18 +470,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Terraria/src/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="89" column="18" selection-start-line="89" selection-start-column="18" selection-end-line="89" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1513#1514#0" expanded="true" />
-            <element signature="e#1536#1537#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Terraria/src/GameServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -536,6 +519,18 @@
             <element signature="e#2929#2930#0" expanded="true" />
             <element signature="e#2975#2976#0" expanded="true" />
             <element signature="e#4164#4165#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Terraria/src/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="174" column="18" selection-start-line="174" selection-start-column="18" selection-end-line="174" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2178#2179#0" expanded="true" />
+            <element signature="e#2201#2202#0" expanded="true" />
           </folding>
         </state>
       </provider>

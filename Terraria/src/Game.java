@@ -172,6 +172,8 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
       }
     }
 
+    client.draw();
+
     twoDGraph.drawImage(back, null, 0, 0);
   }
 
