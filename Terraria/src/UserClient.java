@@ -81,16 +81,16 @@ public class UserClient implements Runnable {
 			//Scanner input = new Scanner(socket.getInputStream());
 			//System.out.println("Server: " + input.nextLine());
 			output = new PrintWriter(socket.getOutputStream(), true);
-			broadcastMessage(name, " joined the game!");
 			//Scanner sockscan = new Scanner(socket.getInputStream());
 			//Thread t = new Thread(new UserClient(hostname));
 			Thread t = new Thread(this);
 			t.start();
 			//while (true) {
 				//BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-				if (keyboard.hasNextLine()) {
+				broadcastMessage(name + " joined the game!");
+				/*if (keyboard.hasNextLine()) {
 					broadcastMessage(name, keyboard.nextLine());
-				}
+				}*/
 				// fix printing multiples, and print overlapping from multiples issue
 				/*while (reader.ready()) {
 					System.out.println(sockscan.nextLine());
