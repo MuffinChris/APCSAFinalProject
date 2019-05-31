@@ -184,7 +184,14 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
     else {
       mouseEvent = e;
       mouseClicked = true;
+      /*
       if (blockList.size() <= inventoryList.size() + 1) {
+        blockList.add(new Block(e.getX(), e.getY(), 50, 50, speed, "dirt"));
+        inventoryList.remove(inventoryList.get(0));
+        numDirt--;
+      }
+      */
+      if (inventoryList.size() > 0) {
         blockList.add(new Block(e.getX(), e.getY(), 50, 50, speed, "dirt"));
         inventoryList.remove(inventoryList.get(0));
         numDirt--;
