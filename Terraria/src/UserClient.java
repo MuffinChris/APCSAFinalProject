@@ -83,6 +83,7 @@ public class UserClient implements Runnable {
 			output = new PrintWriter(socket.getOutputStream(), true);
 			//Scanner sockscan = new Scanner(socket.getInputStream());
 			//Thread t = new Thread(new UserClient(hostname));
+			output.println(name);
 			Thread t = new Thread(this);
 			t.start();
 			//while (true) {
@@ -159,6 +160,20 @@ public class UserClient implements Runnable {
 					String s = sockscan.nextLine();
 					if (s.contains("Your Client ID")) {
 						id = Integer.valueOf(s.replace("Your Client ID is: ",""));
+					} else if (s.contains("CLIENT CLOSED: ")) {
+						s=s.replace("CLIENT CLOSED: ", "");
+						int index = 0;
+						boolean remove = false;
+						for (DrawPlayer pl : players) {
+							if (pl.getName().equals(s)) {
+								remove = true;
+								break;
+							}
+							index++;
+						}
+						if (remove) {
+							players.remove(index);
+						}
 					} else if (s.contains("moved to") && !s.contains(":")) {
 						String position = s.replace("moved to ", "");
 						position = position.replace("[]", ",");
@@ -219,6 +234,7 @@ public class UserClient implements Runnable {
 	@Override
 	protected void finalize() {
 		try {
+			this.broadcastMessage("CLIENT CLOSED: " + name);
 			PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
 			output.println("CLOSE CLIENT ID: " + id);
 			socket.close();
