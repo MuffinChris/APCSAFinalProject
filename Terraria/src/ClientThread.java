@@ -9,12 +9,14 @@ public class ClientThread implements Runnable {
 	private Client client;
 	private JTextArea text;
 	private boolean open;
+	private String name;
 	private Server server;
 	
-	public ClientThread (Client client, JTextArea text, Server server) {
+	public ClientThread (Client client, JTextArea text, Server server, String name) {
 		this.client = client;
 		this.text = text;
 		open = true;
+		this.name = name;
 		this.server = server;
 	}
 	
@@ -61,6 +63,7 @@ public class ClientThread implements Runnable {
 				System.out.println(">> Closed Socket || Client ID: " + client.getID());
 				//client.getSocket().getOutputStream().close();
 				//client.getSocket().getInputStream().close();
+				server.globalMessage("CLIENT CLOSED: " + name, this, true);
 				client.getSocket().close();
 			} catch (Exception e) {
 				System.out.println("Failed to close socket || Client ID: " + client.getID());
