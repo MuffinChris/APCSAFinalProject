@@ -127,7 +127,7 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
       client.setWindow(graphToBack);
     }
 
-    inventoryBox.setColor(new Color (34, 139, 34));
+    inventoryBox.setColor(new Color (245, 245, 220));
     inventoryBox.fillRect(0,0,140,140);
 
     Graphics clickedBlock = back.createGraphics();
