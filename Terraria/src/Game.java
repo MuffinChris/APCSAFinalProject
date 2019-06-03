@@ -26,6 +26,8 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
 
   //blocks
   private int numDirt;
+  private int numStone;
+  private int numWood;
   private int screenWidth;
   private int screenHeight;
   private Block blockOne;
@@ -53,13 +55,15 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
   public Game(int width, int height) {
 
     numDirt = 0;
+    numStone = 0;
+    numWood = 0;
     screenWidth = width; //access width of screen
     screenHeight = height-23; //access height of screen
     blockList = new BlockType();
     inventoryList = new BlockType();
     
     setBackground(Color.black);
-    keys = new boolean[4];
+    keys = new boolean[7];
 
     player = new Player(0, height-175, 50, 50, speed, null);
     background = new Block(0, 0, width, height, speed);
@@ -69,10 +73,23 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
 
     int xPos = blockOne.getX();
     int yPos = blockOne.getY();
-    for (int i = 0; i < 10; i++) {
+    
+    for (int i = 0; i < 2; i++) {
       xPos = (int)(Math.random()*(screenWidth-20)+1);
       yPos = (int)(Math.random()*(screenHeight-20)+1);
       blockList.add(new Block(xPos, yPos, 50, 50, speed, "dirt"));
+    }
+
+    for (int i = 0; i < 3; i++) {
+      xPos = (int)(Math.random()*(screenWidth-20)+1);
+      yPos = (int)(Math.random()*(screenHeight-20)+1);
+      blockList.add(new Block(xPos, yPos, 50, 50, speed, "stone"));
+    }
+
+    for (int i = 0; i < 3; i++) {
+      xPos = (int)(Math.random()*(screenWidth-20)+1);
+      yPos = (int)(Math.random()*(screenHeight-20)+1);
+      blockList.add(new Block(xPos, yPos, 50, 50, speed, "wood"));
     }
 
     this.addKeyListener(this);
@@ -117,9 +134,10 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
     player.draw(graphToBack);
     blockList.drawEmAll(graphToBack);
 
-    graphToBack.drawString("INVENTORY: ", 20, 40 );
-    graphToBack.drawString("DIRT x" + numDirt, 20, 70);
-    graphToBack.drawString("STONE x", 20, 90);
+    graphToBack.drawString("INVENTORY", 20, 40);
+    graphToBack.drawString("[1] DIRT x" + numDirt, 20, 70);
+    graphToBack.drawString("[2] STONE x" + numStone, 20, 90);
+    graphToBack.drawString("[3] WOOD x" + numWood, 20, 110);
 
     if(keys[0] == true && player.getX() >= 0) {
       player.move("LEFT");
@@ -128,7 +146,17 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
              player.getY()+player.getHeight() >= blockList.get(i).getY() &&
              player.getX() <= blockList.get(i).getX()+blockList.get(i).getWidth() &&
              player.getX() >= blockList.get(i).getX()+blockList.get(i).getWidth()-speed-4) { 
-          numDirt++;
+          
+          if (blockList.get(i).getType().equals("dirt")) {
+            numDirt++;
+          }
+          else if (blockList.get(i).getType().equals("stone")) {
+            numStone++;
+          }
+          else if (blockList.get(i).getType().equals("wood")) {
+            numWood++;
+          }
+
           inventoryList.add(blockList.get(i));
           blockList.remove(blockList.get(i));
         }
@@ -141,7 +169,17 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
              player.getY()+player.getHeight() >= blockList.get(i).getY() &&
              player.getX()+player.getWidth() >= blockList.get(i).getX() &&  
              player.getX()+player.getWidth() <= blockList.get(i).getX()+speed+4 ) { 
-          numDirt++;
+          
+          if (blockList.get(i).getType().equals("dirt")) {
+            numDirt++;
+          }
+          else if (blockList.get(i).getType().equals("stone")) {
+            numStone++;
+          }
+          else if (blockList.get(i).getType().equals("wood")) {
+            numWood++;
+          }
+
           inventoryList.add(blockList.get(i));
           blockList.remove(blockList.get(i));
         }
@@ -153,7 +191,17 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
         if ( player.getX() <= blockList.get(i).getX()+blockList.get(i).getWidth() && 
              player.getX()+player.getWidth() >= blockList.get(i).getX() &&
              player.getY() == blockList.get(i).getY()+blockList.get(i).getHeight()+speed+4) { 
-          numDirt++;
+
+          if (blockList.get(i).getType().equals("dirt")) {
+            numDirt++;
+          }
+          else if (blockList.get(i).getType().equals("stone")) {
+            numStone++;
+          }
+          else if (blockList.get(i).getType().equals("wood")) {
+            numWood++;
+          }
+
           inventoryList.add(blockList.get(i));
           blockList.remove(blockList.get(i));
         }
@@ -165,7 +213,17 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
         if ( player.getX() <= blockList.get(i).getX()+blockList.get(i).getWidth() && 
              player.getX()+player.getWidth() >= blockList.get(i).getX() &&
              player.getY()+player.getHeight() == blockList.get(i).getY()-speed-4) { 
-          numDirt++;
+          
+          if (blockList.get(i).getType().equals("dirt")) {
+            numDirt++;
+          }
+          else if (blockList.get(i).getType().equals("stone")) {
+            numStone++;
+          }
+          else if (blockList.get(i).getType().equals("wood")) {
+            numWood++;
+          }
+
           inventoryList.add(blockList.get(i));
           blockList.remove(blockList.get(i));
         }
@@ -173,7 +231,6 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
     }
 
     client.draw();
-
     twoDGraph.drawImage(back, null, 0, 0);
   }
 
@@ -184,17 +241,26 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
     else {
       mouseEvent = e;
       mouseClicked = true;
-      /*
-      if (blockList.size() <= inventoryList.size() + 1) {
-        blockList.add(new Block(e.getX(), e.getY(), 50, 50, speed, "dirt"));
-        inventoryList.remove(inventoryList.get(0));
-        numDirt--;
-      }
-      */
+      String blockType;
       if (inventoryList.size() > 0) {
-        blockList.add(new Block(e.getX(), e.getY(), 50, 50, speed, "dirt"));
-        inventoryList.remove(inventoryList.get(0));
-        numDirt--;
+        if (keys[4] && numDirt > 0) {
+          blockType = "dirt";
+          blockList.add(new Block(e.getX(), e.getY(), 50, 50, speed, blockType));
+          inventoryList.remove(inventoryList.get(0));
+          numDirt--;
+        }
+        if (keys[5] && numStone > 0) {
+          blockType = "stone";
+          blockList.add(new Block(e.getX(), e.getY(), 50, 50, speed, blockType));
+          inventoryList.remove(inventoryList.get(0));
+          numStone--;
+        }
+        if (keys[6] && numWood > 0) {
+          blockType = "wood";
+          blockList.add(new Block(e.getX(), e.getY(), 50, 50, speed, blockType));
+          inventoryList.remove(inventoryList.get(0));
+          numWood--;
+        }
       }
     }
   }
@@ -217,8 +283,14 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
     if (e.getKeyCode() == KeyEvent.VK_DOWN) {
       keys[3] = true;
     }
-    if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+    if (e.getKeyCode() == KeyEvent.VK_1) {
       keys[4] = true;
+    }
+    if (e.getKeyCode() == KeyEvent.VK_2) {
+      keys[5] = true;
+    }
+    if (e.getKeyCode() == KeyEvent.VK_3) {
+      keys[6] = true;
     }
     repaint();
   }
@@ -237,8 +309,14 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
     if (e.getKeyCode() == KeyEvent.VK_DOWN) {
       keys[3] = false;
     }
-    if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+    if (e.getKeyCode() == KeyEvent.VK_1) {
       keys[4] = false;
+    }
+    if (e.getKeyCode() == KeyEvent.VK_2) {
+      keys[5] = false;
+    }
+    if (e.getKeyCode() == KeyEvent.VK_3) {
+      keys[6] = false;
     }
     repaint();
   }

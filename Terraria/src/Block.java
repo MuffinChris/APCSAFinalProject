@@ -9,6 +9,7 @@ public class Block extends MovingThing {
   
   private int speed;
   private Image image;
+  private String type;
 
   public Block() {
     this(0,0,30,30,0);
@@ -43,8 +44,27 @@ public class Block extends MovingThing {
     super(x, y, w, h);
     speed=s;
     if (type.equals("dirt")) {
+      this.type = type;
       try {
         URL url = getClass().getResource("dirt.png");
+        image = ImageIO.read(url);
+      }
+      catch(Exception e) {
+      }
+    }
+    else if (type.equals("wood")) {
+      this.type = type;
+      try {
+        URL url = getClass().getResource("wood.png");
+        image = ImageIO.read(url);
+      }
+      catch(Exception e) {
+      }
+    }
+    else if (type.equals("stone")) {
+      this.type = type;
+      try {
+        URL url = getClass().getResource("stone.png");
         image = ImageIO.read(url);
       }
       catch(Exception e) {
@@ -58,6 +78,10 @@ public class Block extends MovingThing {
 
   public int getSpeed() {
     return speed;
+  }
+
+  public String getType() {
+    return type;
   }
 
   public void move(String direction){
