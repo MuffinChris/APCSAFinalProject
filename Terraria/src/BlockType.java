@@ -36,6 +36,24 @@ public class BlockType {
     }
   }
 
+  public void setList(List<Block> blockz) {
+    blocks = blockz;
+  }
+
+  public List<Block> getBlocks() {
+    return blocks;
+  }
+
+  public List<String> getBlockInfo() {
+    List<String> output = new ArrayList<String>();
+
+    for (Block b : blocks) {
+      output.add(b.getX()+"[]"+b.getY()+"[]"+b.getHeight()+"[]"+b.getWidth());
+    }
+
+    return output;
+  }
+
   public String toString() {
     return super.toString();
   }

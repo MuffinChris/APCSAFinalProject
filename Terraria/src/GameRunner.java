@@ -7,6 +7,7 @@ public class GameRunner extends JFrame implements Runnable {
   public static final int WIDTH = 1200;
   public static final int HEIGHT = 800;
   private UserClient client;
+  private static BlockType blockList;
 
   public UserClient getClient() {
     return client;
@@ -15,6 +16,10 @@ public class GameRunner extends JFrame implements Runnable {
   public static void main(String[] args) {
     GameRunner game = new GameRunner();
   }
+
+ public void setBlockList(BlockType bl) {
+    blockList = bl;
+ }
 
 
   public GameRunner() {
@@ -31,18 +36,21 @@ public class GameRunner extends JFrame implements Runnable {
 
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setSize(WIDTH,HEIGHT);
+    /*Thread t = new Thread(this);
+    t.start();*/
+    client = new UserClient();
+    while (!(client.getBlockList().get(0) instanceof Block)) {
 
-    Game theGame = new Game(WIDTH, HEIGHT);
+    }
+    blockList = client.getBlockList();
+    Game theGame = new Game(WIDTH, HEIGHT, blockList);
+
+    theGame.setClient(client);
     ((Component)theGame).setFocusable(true);
 
     getContentPane().add(theGame);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setVisible(true);
-    setState(JFrame.ICONIFIED);
-    /*Thread t = new Thread(this);
-    t.start();*/
-    client = new UserClient();
-    theGame.setClient(client);
     setState(JFrame.NORMAL);
 
   }

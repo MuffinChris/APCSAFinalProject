@@ -4,8 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 import java.util.List;
 
 public class UserClient implements Runnable {
@@ -16,6 +15,7 @@ public class UserClient implements Runnable {
 	private String name;
 	private Graphics window;
 	private List<DrawPlayer> players;
+	private BlockType blockList;
 
 	public Graphics getWindow() {
 		return window;
@@ -62,6 +62,10 @@ public class UserClient implements Runnable {
 				}
 			}
 		}
+	}
+
+	public BlockType getBlockList() {
+		return blockList;
 	}
 
 	public UserClient() {
@@ -174,6 +178,26 @@ public class UserClient implements Runnable {
 						if (remove) {
 							players.remove(index);
 						}
+					} else if (s.contains("BLOCKLIST: ")) {
+
+						String bl = s.replace("BLOCKLIST: ", "");
+						List<Block> blockl = new ArrayList<Block>();
+						List<String> bsl = new ArrayList<String>();
+						bsl = Arrays.asList(bl.split(","));
+						for (String sb : bsl) {
+							String info = sb.replace("[]", ",");
+							String[] infol = info.split(",");
+							int x = Integer.valueOf(infol[0]);
+							int y = Integer.valueOf(infol[1]);
+							int height = Integer.valueOf(infol[2]);
+							int width =Integer.valueOf(infol[3]);
+							Block block = new Block(x, y, width, height, 2);
+							blockl.add(block);
+						}
+						blockList.setList(blockl);
+						System.out.println(blockList.toString());
+
+
 					} else if (s.contains("moved to") && !s.contains(":")) {
 						String position = s.replace("moved to ", "");
 						position = position.replace("[]", ",");

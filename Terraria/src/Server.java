@@ -19,9 +19,11 @@ public class Server {
 	private int currentId = 0;
 	private InetAddress address;
 	private List<ClientThread> clients;
+	private BlockType blockList;
 	
-	public Server(JTextArea textArea) {
+	public Server(JTextArea textArea, BlockType blocklist) {
 		this.textArea = textArea;
+		blockList = blocklist;
 	}
 	
 	public ServerSocket getServer() {
@@ -61,6 +63,8 @@ public class Server {
 				System.out.println(">> Created new Client Thread (" + w.getClient().getID() + ")");
 				PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
 				output.println("You have joined the Server! Welcome!!!");
+				output.println("BLOCKLIST: " + blockList.getBlockInfo().toString());
+				// issue with outputting info... fix later
 				output.println("Your Client ID is: " + currentId);
 				currentId++;
 			} catch (Exception e) {

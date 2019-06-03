@@ -50,12 +50,11 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
     client = c;
   }
 
-  public Game(int width, int height) {
+  public Game(int width, int height, BlockType blocklist) {
 
     numDirt = 0;
     screenWidth = width; //access width of screen
     screenHeight = height-23; //access height of screen
-    blockList = new BlockType();
     inventoryList = new BlockType();
     
     setBackground(Color.black);
@@ -63,17 +62,8 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
 
     player = new Player(0, height-175, 50, 50, speed, null);
     background = new Block(0, 0, width, height, speed);
-    
-    blockOne = new Block(100, 300, 50, 50, speed, "dirt");
-    blockList.add(blockOne);
 
-    int xPos = blockOne.getX();
-    int yPos = blockOne.getY();
-    for (int i = 0; i < 10; i++) {
-      xPos = (int)(Math.random()*(screenWidth-20)+1);
-      yPos = (int)(Math.random()*(screenHeight-20)+1);
-      blockList.add(new Block(xPos, yPos, 50, 50, speed, "dirt"));
-    }
+    blockList = blocklist;
 
     this.addKeyListener(this);
     new Thread(this).start();
@@ -131,6 +121,7 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
           numDirt++;
           inventoryList.add(blockList.get(i));
           blockList.remove(blockList.get(i));
+          client.broadcastMessage("BLOCK REMOVE: " + blockList.get(i).getX() + "," + blockList.get(i).getY());
         }
       }
     }
@@ -144,6 +135,7 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
           numDirt++;
           inventoryList.add(blockList.get(i));
           blockList.remove(blockList.get(i));
+          client.broadcastMessage("BLOCK REMOVE: " + blockList.get(i).getX() + "," + blockList.get(i).getY());
         }
       }
     }
@@ -156,6 +148,7 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
           numDirt++;
           inventoryList.add(blockList.get(i));
           blockList.remove(blockList.get(i));
+          client.broadcastMessage("BLOCK REMOVE: " + blockList.get(i).getX() + "," + blockList.get(i).getY());
         }
       }
     }
@@ -168,6 +161,7 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
           numDirt++;
           inventoryList.add(blockList.get(i));
           blockList.remove(blockList.get(i));
+          client.broadcastMessage("BLOCK REMOVE: " + blockList.get(i).getX() + "," + blockList.get(i).getY());
         }
       }
     }
