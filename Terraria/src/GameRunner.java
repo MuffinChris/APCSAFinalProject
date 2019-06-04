@@ -39,8 +39,8 @@ public class GameRunner extends JFrame implements Runnable {
     /*Thread t = new Thread(this);
     t.start();*/
     client = new UserClient();
-    while (!(client.getBlockList().get(0) instanceof Block)) {
-
+    while (client.getBlockList() == null) {
+        System.out.println("run it down mid");
     }
     blockList = client.getBlockList();
     Game theGame = new Game(WIDTH, HEIGHT, blockList);

@@ -62,8 +62,8 @@ public class Server {
 				thread.start();
 				System.out.println(">> Created new Client Thread (" + w.getClient().getID() + ")");
 				PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
-				output.println("You have joined the Server! Welcome!!!");
 				output.println("BLOCKLIST: " + blockList.getBlockInfo().toString());
+				output.println("You have joined the Server! Welcome!!!");
 				// issue with outputting info... fix later
 				output.println("Your Client ID is: " + currentId);
 				currentId++;
@@ -86,7 +86,20 @@ public class Server {
 						//if (ct.getClient().getSocket() != null && ct.getClient().getSocket().getOutputStream() != null) {
 						outputCT = new PrintWriter(ct.getClient().getSocket().getOutputStream(), true);
 						outputCT.println(s);
-						System.out.println(s);
+						//System.out.println(s);
+						if (s.contains("BLOCK REMOVE: ")) {
+							System.out.println(s);
+							s = s.replace("BLOCK REMOVE: ", "");
+							String[] list = s.split(",");
+							int x = Integer.valueOf(list[0]);
+							int y = Integer.valueOf(list[1]);
+							for (int i = blockList.size() - 1; i>=0; i--) {
+								Block b = blockList.get(i);
+								if (b.getX() == x && b.getY() == y) {
+									blockList.remove(b);
+								}
+							}
+						}
 
 						//}
 					} catch (IOException e) {

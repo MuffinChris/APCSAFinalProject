@@ -48,7 +48,7 @@ public class BlockType {
     List<String> output = new ArrayList<String>();
 
     for (Block b : blocks) {
-      output.add(b.getX()+"[]"+b.getY()+"[]"+b.getHeight()+"[]"+b.getWidth());
+      output.add(b.getX()+"<>"+b.getY()+"<>"+b.getHeight()+"<>"+b.getWidth() + "<>" + b.getType());
     }
 
     return output;

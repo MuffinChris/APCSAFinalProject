@@ -68,30 +68,6 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
     background = new Block(0, 0, width, height, speed);
 
     blockList = blocklist;
-    
-    blockOne = new Block(100, 300, 50, 50, speed, "dirt");
-    blockList.add(blockOne);
-
-    int xPos = blockOne.getX();
-    int yPos = blockOne.getY();
-    
-    for (int i = 0; i < 2; i++) {
-      xPos = (int)(Math.random()*(screenWidth-20)+1);
-      yPos = (int)(Math.random()*(screenHeight-20)+1);
-      blockList.add(new Block(xPos, yPos, 50, 50, speed, "dirt"));
-    }
-
-    for (int i = 0; i < 3; i++) {
-      xPos = (int)(Math.random()*(screenWidth-20)+1);
-      yPos = (int)(Math.random()*(screenHeight-20)+1);
-      blockList.add(new Block(xPos, yPos, 50, 50, speed, "stone"));
-    }
-
-    for (int i = 0; i < 3; i++) {
-      xPos = (int)(Math.random()*(screenWidth-20)+1);
-      yPos = (int)(Math.random()*(screenHeight-20)+1);
-      blockList.add(new Block(xPos, yPos, 50, 50, speed, "wood"));
-    }
 
     this.addKeyListener(this);
     new Thread(this).start();
@@ -159,8 +135,8 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
           }
 
           inventoryList.add(blockList.get(i));
-          blockList.remove(blockList.get(i));
           client.broadcastMessage("BLOCK REMOVE: " + blockList.get(i).getX() + "," + blockList.get(i).getY());
+          blockList.remove(blockList.get(i));
         }
       }
     }
@@ -183,8 +159,8 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
           }
 
           inventoryList.add(blockList.get(i));
-          blockList.remove(blockList.get(i));
           client.broadcastMessage("BLOCK REMOVE: " + blockList.get(i).getX() + "," + blockList.get(i).getY());
+          blockList.remove(blockList.get(i));
         }
       }
     }
@@ -206,8 +182,8 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
           }
 
           inventoryList.add(blockList.get(i));
-          blockList.remove(blockList.get(i));
           client.broadcastMessage("BLOCK REMOVE: " + blockList.get(i).getX() + "," + blockList.get(i).getY());
+          blockList.remove(blockList.get(i));
         }
       }
     }
@@ -229,8 +205,8 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
           }
 
           inventoryList.add(blockList.get(i));
-          blockList.remove(blockList.get(i));
           client.broadcastMessage("BLOCK REMOVE: " + blockList.get(i).getX() + "," + blockList.get(i).getY());
+          blockList.remove(blockList.get(i));
         }
       }
     }
