@@ -29,7 +29,7 @@ public class Server implements Runnable {
 	public void run() {
 		while(true) {
 			try {
-				Thread.sleep(500);
+				Thread.currentThread().sleep(500);
 				globalMessage("BLOCKLIST: " + blockList.getBlockInfo().toString(), new ClientThread(), true);
 			} catch (Exception e) {
 				e.printStackTrace();
