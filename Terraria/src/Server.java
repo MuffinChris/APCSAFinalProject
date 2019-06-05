@@ -10,7 +10,7 @@ import java.util.List;
 
 import javax.swing.JTextArea;
 
-public class Server {
+public class Server implements Runnable {
 
 	public static final int port = 4321;
 	private ServerSocket server;
@@ -24,6 +24,17 @@ public class Server {
 	public Server(JTextArea textArea, BlockType blocklist) {
 		this.textArea = textArea;
 		blockList = blocklist;
+	}
+
+	public void run() {
+		while(true) {
+			try {
+				Thread.sleep(500);
+				globalMessage("BLOCKLIST: " + blockList.getBlockInfo().toString(), new ClientThread(), true);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	public ServerSocket getServer() {
@@ -39,6 +50,8 @@ public class Server {
 	}
 	
 	public void listen() {
+		Thread t = new Thread(this);
+		t.start();
 		clients = new ArrayList<ClientThread>();
 		try {
 			System.out.println("Listening for clients.");
@@ -80,6 +93,19 @@ public class Server {
 			//if (s == null) {
 			//	return;
 			//}
+			if (s.contains("BLOCK REMOVE: ")) {
+				System.out.println(s);
+				s = s.replace("BLOCK REMOVE: ", "");
+				String[] list = s.split(",");
+				int x = Integer.valueOf(list[0]);
+				int y = Integer.valueOf(list[1]);
+				for (int i = blockList.size() - 1; i>=0; i--) {
+					Block b = blockList.get(i);
+					if (b.getX() == x && b.getY() == y) {
+						blockList.remove(b);
+					}
+				}
+			}
 			for (ClientThread ct : clients) {
 				if (!ct.equals(exclude) && ct.isOpen()) {
 					try {
@@ -87,19 +113,6 @@ public class Server {
 						outputCT = new PrintWriter(ct.getClient().getSocket().getOutputStream(), true);
 						outputCT.println(s);
 						//System.out.println(s);
-						if (s.contains("BLOCK REMOVE: ")) {
-							System.out.println(s);
-							s = s.replace("BLOCK REMOVE: ", "");
-							String[] list = s.split(",");
-							int x = Integer.valueOf(list[0]);
-							int y = Integer.valueOf(list[1]);
-							for (int i = blockList.size() - 1; i>=0; i--) {
-								Block b = blockList.get(i);
-								if (b.getX() == x && b.getY() == y) {
-									blockList.remove(b);
-								}
-							}
-						}
 
 						//}
 					} catch (IOException e) {

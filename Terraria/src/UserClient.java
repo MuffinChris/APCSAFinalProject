@@ -179,6 +179,7 @@ public class UserClient implements Runnable {
 							players.remove(index);
 						}
 					} else if (s.contains("BLOCK REMOVE: ")){
+						//System.out.println(s);
 						s = s.replace("BLOCK REMOVE: ", "");
 						String[] list = s.split(",");
 						int x = Integer.valueOf(list[0]);
@@ -187,7 +188,7 @@ public class UserClient implements Runnable {
 							Block b = blockList.get(i);
 							if (b.getX() == x && b.getY() == y) {
 								blockList.remove(b);
-								System.out.println(b.getX() + " " + b.getY());
+								//System.out.println(b.getX() + " " + b.getY());
 							}
 						}
 					} else if (s.contains("BLOCKLIST: ")) {
@@ -198,7 +199,6 @@ public class UserClient implements Runnable {
 						bl = bl.replace("[", "");
 						bl = bl.replace("]", "");
 						bsl = Arrays.asList(bl.split(","));
-						System.out.println(bsl.toString());
 						for (String sb : bsl) {
 							String info = sb.replace("<>", ",");
 							info = info.replace(" ", "");
@@ -213,9 +213,8 @@ public class UserClient implements Runnable {
 						}
 						blockList = new BlockType();
 						blockList.setList(blockl);
-						for (Block b : blockList.getBlocks()) {
-							System.out.println(b);
-						}
+
+						System.out.println(blockList.getBlocks().size());
 
 
 					} else if (s.contains("moved to") && !s.contains(":")) {

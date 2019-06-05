@@ -40,7 +40,12 @@ public class GameRunner extends JFrame implements Runnable {
     t.start();*/
     client = new UserClient();
     while (client.getBlockList() == null) {
-        System.out.println("run it down mid");
+        System.out.println("Connecting...");
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
+
+        }
     }
     blockList = client.getBlockList();
     Game theGame = new Game(WIDTH, HEIGHT, blockList);

@@ -11,7 +11,11 @@ public class ClientThread implements Runnable {
 	private boolean open;
 	private String name;
 	private Server server;
-	
+
+	public ClientThread() {
+		open = true;
+	}
+
 	public ClientThread (Client client, JTextArea text, Server server, String name) {
 		this.client = client;
 		this.text = text;

@@ -109,6 +109,7 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
 
     Graphics clickedBlock = back.createGraphics();
     player.draw(graphToBack);
+    blockList = client.getBlockList();
     blockList.drawEmAll(graphToBack);
 
     graphToBack.drawString("INVENTORY", 20, 40);
