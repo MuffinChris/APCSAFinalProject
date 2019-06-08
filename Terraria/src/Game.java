@@ -83,6 +83,10 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
     paint(window);
   }
 
+  public void removeBlock(Block b) {
+    client.broadcastMessage("BLOCK REMOVE: " + b.getX() + "," + b.getY());
+  }
+
   public void paint(Graphics window) {
 
     if (!(client instanceof UserClient)) {
@@ -136,7 +140,7 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
           }
 
           inventoryList.add(blockList.get(i));
-          client.broadcastMessage("BLOCK REMOVE: " + blockList.get(i).getX() + "," + blockList.get(i).getY());
+          removeBlock(blockList.get(i));
           blockList.remove(blockList.get(i));
         }
       }
@@ -160,7 +164,7 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
           }
 
           inventoryList.add(blockList.get(i));
-          client.broadcastMessage("BLOCK REMOVE: " + blockList.get(i).getX() + "," + blockList.get(i).getY());
+          removeBlock(blockList.get(i));
           blockList.remove(blockList.get(i));
         }
       }
@@ -183,7 +187,7 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
           }
 
           inventoryList.add(blockList.get(i));
-          client.broadcastMessage("BLOCK REMOVE: " + blockList.get(i).getX() + "," + blockList.get(i).getY());
+          removeBlock(blockList.get(i));
           blockList.remove(blockList.get(i));
         }
       }
@@ -206,7 +210,7 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
           }
 
           inventoryList.add(blockList.get(i));
-          client.broadcastMessage("BLOCK REMOVE: " + blockList.get(i).getX() + "," + blockList.get(i).getY());
+          removeBlock(blockList.get(i));
           blockList.remove(blockList.get(i));
         }
       }
