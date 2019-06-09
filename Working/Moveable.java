@@ -16,3 +16,4 @@ public interface Moveable {
   public int getSpeed();
   
 }
+

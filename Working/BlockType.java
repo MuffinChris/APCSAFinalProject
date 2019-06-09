@@ -5,8 +5,8 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import java.util.ArrayList;
 import java.util.List;
-
-public class BlockType {
+import java.io.*;
+public class BlockType implements Serializable {
 
   private List<Block> blocks;
 
@@ -26,6 +26,10 @@ public class BlockType {
     return blocks.size();
   }
 
+	public void set(int i, Block block)
+	{
+		blocks.set(i,block);
+	}
   public void remove(Block block) {
     blocks.remove(block);
   }
@@ -37,7 +41,7 @@ public class BlockType {
   }
 
   public String toString() {
-    return super.toString();
+    return String.valueOf(blocks.size());
   }
 
 }

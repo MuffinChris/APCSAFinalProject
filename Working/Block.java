@@ -4,12 +4,12 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.imageio.ImageIO;
-
-public class Block extends MovingThing {
+import java.io.*;
+public class Block extends MovingThing implements Serializable {
   
   private int speed;
-  private Image image;
-
+  transient private  Image image;
+	private String type;
   public Block() {
     this(0,0,30,30,0);
   }
@@ -39,9 +39,10 @@ public class Block extends MovingThing {
     }
   }
 
-  public Block(int x, int y, int w, int h, int s, String type) {
+  public Block(int x, int y, int w, int h, int s, String t) {
     super(x, y, w, h);
     speed=s;
+	type = t;
     if (type.equals("dirt")) {
       try {
         URL url = getClass().getResource("dirt.png");
@@ -59,6 +60,11 @@ public class Block extends MovingThing {
   public int getSpeed() {
     return speed;
   }
+
+	public String getType()
+	{
+		return type;	
+	}
 
   public void move(String direction) {
     if (direction.equals("LEFT")) {

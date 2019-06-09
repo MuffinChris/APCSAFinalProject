@@ -8,10 +8,10 @@ import javax.imageio.ImageIO;
 public class Player extends MovingThing {
 
   private int speed;
-  private Image image;
-
+	transient  private Image image;
+	private String direction;
   public Player(){
-    this(10,10,10,10,10);
+    this(10,10,10,10,10,"LEFT");
   }
 
   public Player(int x, int y){
@@ -23,16 +23,32 @@ public class Player extends MovingThing {
     speed = s;
   }
 
-  public Player(int x, int y, int w, int h, int s){
+  public Player(int x, int y, int w, int h, int s,String dir){
     super(x, y, w, h);
     speed=s;
-    try{
-      URL url = getClass().getResource("playerLeft.png");
-      image = ImageIO.read(url);
-    }
-    catch(Exception e){
-    }
-  }
+	direction = dir;
+//	System.out.println(direction);
+	if (direction.equals("LEFT"))
+  	{
+	  try{
+	      URL url = getClass().getResource("playerLeft.png");
+	      image = ImageIO.read(url);
+	    }
+	    catch(Exception e){
+	    }
+	} 
+	else
+	{
+		try {
+		URL url = getClass().getResource("playerRight.png");
+              image = ImageIO.read(url);
+            }
+            catch(Exception e){
+            }
+        } 
+ }
+
+
 
   public void setSpeed(int s){
     speed = s;
@@ -42,9 +58,16 @@ public class Player extends MovingThing {
     return speed;
   }
 
-  public void move(String direction)
+	public String getDirection()
+	{
+		return direction;
+	}
+  public void move(String dir)
   {
-    if (direction.equals("LEFT")) {
+	if (dir.equals("LEFT")||dir.equals("RIGHT"))
+
+		direction = dir;
+    if (dir.equals("LEFT")) {
       setX(getX()-speed); 
       try{
         URL url = getClass().getResource("playerLeft.png");
@@ -53,7 +76,7 @@ public class Player extends MovingThing {
       catch(Exception e){
       }
     }
-    else if (direction.equals("RIGHT")) {
+    else if (dir.equals("RIGHT")) {
       setX(getX()+speed); 
       try{
         URL url = getClass().getResource("playerRight.png");
@@ -62,10 +85,10 @@ public class Player extends MovingThing {
       catch(Exception e){
       }
     }
-    else if (direction.equals("UP")) {
+    else if (dir.equals("UP")) {
       setY(getY()-speed+1); 
     }
-    else if (direction.equals("DOWN")) {
+    else if (dir.equals("DOWN")) {
       setY(getY()+speed-1); 
     }
   }
@@ -79,3 +102,4 @@ public class Player extends MovingThing {
   }
 
 }
+
