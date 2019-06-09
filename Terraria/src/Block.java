@@ -4,11 +4,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.imageio.ImageIO;
-
-public class Block extends MovingThing {
+import java.io.*;
+public class Block extends MovingThing implements Serializable {
   
   private int speed;
-  private Image image;
+	transient  private Image image;
   private String type;
 
   public Block() {

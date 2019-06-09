@@ -5,8 +5,9 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import java.util.ArrayList;
 import java.util.List;
-
-public class BlockType {
+import java.io.*;
+public class BlockType implements Serializable {
+//public class BlockType {
 
   private List<Block> blocks;
 
@@ -36,6 +37,10 @@ public class BlockType {
     }
   }
 
+	public void set(int i, Block block)
+        {
+                blocks.set(i,block);
+        }
   public void setList(List<Block> blockz) {
     blocks = blockz;
   }

@@ -8,6 +8,8 @@ public class GameRunner extends JFrame implements Runnable {
   public static final int HEIGHT = 800;
   private UserClient client;
   private static BlockType blockList;
+  private static BlockType inventoryList;
+  private static Player player;
 
   public UserClient getClient() {
     return client;
@@ -20,6 +22,16 @@ public class GameRunner extends JFrame implements Runnable {
  public void setBlockList(BlockType bl) {
     blockList = bl;
  }
+ 
+ public void setInventoryList(BlockType in)
+	{
+		inventoryList = in;
+	}
+
+	public void setPlayer(Player p)
+	{
+		player = p;
+	}
 
 
   public GameRunner() {
@@ -48,7 +60,7 @@ public class GameRunner extends JFrame implements Runnable {
         }
     }
     blockList = client.getBlockList();
-    Game theGame = new Game(WIDTH, HEIGHT, blockList);
+    Game theGame = new Game(WIDTH, HEIGHT, blockList,inventoryList, player);
 
     theGame.setClient(client);
     ((Component)theGame).setFocusable(true);

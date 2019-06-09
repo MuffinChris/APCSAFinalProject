@@ -6,8 +6,8 @@ import java.net.Socket;
 import java.net.URL;
 import java.util.*;
 import java.util.List;
-
-public class UserClient implements Runnable {
+import java.io.*;
+public class UserClient implements Runnable,Serializable {
 
 	private static Socket socket;
 	private int id;
@@ -16,7 +16,8 @@ public class UserClient implements Runnable {
 	private Graphics window;
 	private List<DrawPlayer> players;
 	private BlockType blockList;
-
+	private BlockType inventoryList;
+	private Player player;
 	public Graphics getWindow() {
 		return window;
 	}
@@ -68,6 +69,16 @@ public class UserClient implements Runnable {
 		return blockList;
 	}
 
+	public BlockType getInventoryList()
+	{
+		return inventoryList;
+	}
+/*	
+	public ArrayList< getPlayers()
+	{
+		return player;
+	}
+*/
 	public UserClient() {
 		players = new ArrayList<DrawPlayer>();
 		Scanner keyboard = new Scanner(System.in);

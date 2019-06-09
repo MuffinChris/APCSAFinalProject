@@ -3,15 +3,16 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
 import javax.swing.JTextArea;
+import java.io.*;
+public class ClientThread implements Runnable,Serializable{
 
-public class ClientThread implements Runnable {
-
-	private Client client;
+	transient private Client client;
 	private JTextArea text;
 	private boolean open;
 	private String name;
-	private Server server;
+	transient private Server server;
 
+	transient PrintWriter output;
 	public ClientThread() {
 		open = true;
 	}
@@ -37,7 +38,7 @@ public class ClientThread implements Runnable {
 		String s;
 		while (open) {
 			BufferedReader input = null;
-			PrintWriter output = null;
+			 output = null;
 			try {
 				input = new BufferedReader(new InputStreamReader(client.getSocket().getInputStream()));
 				output = new PrintWriter(client.getSocket().getOutputStream(), true);

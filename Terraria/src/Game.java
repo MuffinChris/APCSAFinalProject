@@ -52,7 +52,7 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
     client = c;
   }
 
-  public Game(int width, int height, BlockType blocklist) {
+  public Game(int width, int height, BlockType blocklist,BlockType inventorylist, Player p) {
 
     numDirt = 0;
     numStone = 0;
@@ -60,16 +60,19 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
     screenWidth = width; //access width of screen
     screenHeight = height-23; //access height of screen
     inventoryList = new BlockType();
-    
+   	 
     setBackground(Color.black);
-    keys = new boolean[7];
+    keys = new boolean[8];
 
-    player = new Player(0, height-175, 50, 50, speed, null);
+    player = new Player(0, height-175, 50, 50, speed, "LEFT",null);
     background = new Block(0, 0, width, height, speed);
 
     blockList = blocklist;
-
-    this.addKeyListener(this);
+	
+//	inventoryList= inventorylist;
+//	player = p;
+//	System.out.println(p);   
+ this.addKeyListener(this);
     new Thread(this).start();
     setVisible(true); 
 
@@ -88,8 +91,10 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
     if (!(client instanceof UserClient)) {
       return;
     }
-    player.setClient(client);
-
+//	player = client.getPlayer(); 
+//	System.out.println(player); 
+	player.setClient(client);
+	System.out.println(player);
     Graphics2D twoDGraph = (Graphics2D)window;
 
     if(back==null) 
@@ -110,12 +115,72 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
     Graphics clickedBlock = back.createGraphics();
     player.draw(graphToBack);
     blockList = client.getBlockList();
+//	inventoryList = client.getInventoryList();
+//	player = client.getPlayer();
     blockList.drawEmAll(graphToBack);
 
+	 numDirt=0;
+        for (int i = 0; i < inventoryList.size();i++)
+        {
+                if (inventoryList.get(i).getType().equals("dirt"))
+                {
+                        numDirt++;
+                }
+        }
+
+	numStone = 0;
+	for (int i = 0; i < inventoryList.size();i++)
+        {
+                if (inventoryList.get(i).getType().equals("stone"))
+                {
+                        numStone++;
+                }
+        }
+	numWood = 0;
+	for (int i = 0; i < inventoryList.size();i++)
+        {
+                if (inventoryList.get(i).getType().equals("wood"))
+                {
+                        numWood++;
+                }
+        }
     graphToBack.drawString("INVENTORY", 20, 40);
     graphToBack.drawString("[1] DIRT x" + numDirt, 20, 70);
     graphToBack.drawString("[2] STONE x" + numStone, 20, 90);
     graphToBack.drawString("[3] WOOD x" + numWood, 20, 110);
+
+	graphToBack.drawString("Press SPACE to SAVE Game", 500,40);
+        if (keys[7])
+
+        {
+                        try (FileOutputStream fos = new FileOutputStream("blockList.data");
+                                ObjectOutputStream oos = new ObjectOutputStream(fos))
+                        {
+
+                                        oos.writeObject(blockList);
+                        }catch (IOException e){
+                                e.printStackTrace();
+                }
+
+			String inventorylist = client.getName()+"_inventoryList.data";
+                        try(FileOutputStream fos = new FileOutputStream(inventorylist);
+                                ObjectOutputStream oos = new ObjectOutputStream(fos))
+                                {
+                                        oos.writeObject(inventoryList);
+                                }
+                                catch(IOException e){
+                                e.printStackTrace();
+                        }
+                        try(FileOutputStream fos = new FileOutputStream("player.data");
+                                ObjectOutputStream oos = new ObjectOutputStream(fos))
+                                {
+                                        oos.writeObject(player);
+                                }
+                                catch(IOException e){
+                                e.printStackTrace();
+                                }
+
+        }
 
     if(keys[0] == true && player.getX() >= 0) {
       player.move("LEFT");
@@ -211,6 +276,7 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
         }
       }
     }
+	
 
     client.draw();
     twoDGraph.drawImage(back, null, 0, 0);
@@ -246,6 +312,39 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
       }
     }
   }
+	public void actionPerformed(ActionEvent a)
+        {
+                if ("click".equals(a.getActionCommand()))
+                {
+                        try (FileOutputStream fos = new FileOutputStream("blockList.data");
+                                ObjectOutputStream oos = new ObjectOutputStream(fos))
+                        {
+
+                                        oos.writeObject(blockList);
+                        }catch (IOException e){
+                                e.printStackTrace();
+                }
+
+
+                        try(FileOutputStream fos = new FileOutputStream("inventoryList.data");
+                                ObjectOutputStream oos = new ObjectOutputStream(fos))
+                                {
+                                        oos.writeObject(inventoryList);
+                                }
+                                catch(IOException e){
+                                e.printStackTrace();
+                        }
+                        try(FileOutputStream fos = new FileOutputStream("player.data");
+                                ObjectOutputStream oos = new ObjectOutputStream(fos))
+                                {
+                                        oos.writeObject(player);
+                                }
+                                catch(IOException e){
+                                e.printStackTrace();
+                                }
+                }
+        }
+
 
   public void mouseEntered(MouseEvent e) {}
   public void mouseExited(MouseEvent e) {}
@@ -274,6 +373,9 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
     if (e.getKeyCode() == KeyEvent.VK_3) {
       keys[6] = true;
     }
+	if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+      keys[7] = true;
+	}
     repaint();
   }
 
@@ -294,11 +396,15 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
     if (e.getKeyCode() == KeyEvent.VK_1) {
       keys[4] = false;
     }
+
     if (e.getKeyCode() == KeyEvent.VK_2) {
       keys[5] = false;
     }
     if (e.getKeyCode() == KeyEvent.VK_3) {
       keys[6] = false;
+	}
+	 if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+      keys[7] = false;
     }
     repaint();
   }

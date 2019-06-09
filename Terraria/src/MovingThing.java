@@ -1,7 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
-
-public abstract class MovingThing implements Moveable {
+import java.io.*;
+public abstract class MovingThing implements Moveable,Serializable {
 
   private int xPos;
   private int yPos;

@@ -20,10 +20,15 @@ public class Server implements Runnable {
 	private InetAddress address;
 	private List<ClientThread> clients;
 	private BlockType blockList;
+
+	private BlockType inventoryList;
+	private Player player;
 	
-	public Server(JTextArea textArea, BlockType blocklist) {
+	public Server(JTextArea textArea, BlockType blocklist,BlockType inventorylist, Player p) {
 		this.textArea = textArea;
 		blockList = blocklist;
+		inventoryList = inventorylist;
+		player = p;
 	}
 
 	public void run() {

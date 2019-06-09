@@ -8,12 +8,12 @@ import javax.imageio.ImageIO;
 public class Player extends MovingThing {
 
   private int speed;
-  private Image image;
+  transient  private Image image;
   private UserClient client;
   private String direction;
 
   public Player(){
-    this(10,10,10,10,10, null);
+    this(10,10,10,10,10, "LEFT",null);
   }
 
   public Player(int x, int y){
@@ -25,16 +25,37 @@ public class Player extends MovingThing {
     speed = s;
   }
 
-  public Player(int x, int y, int w, int h, int s, UserClient client){
+  public Player(int x, int y, int w, int h, int s, String dir, UserClient client){
     super(x, y, w, h);
     speed=s;
     this.client = client;
-    try{
+	direction= dir;  
+	if (direction.equals("LEFT"))
+        {
+          try{
+              URL url = getClass().getResource("playerLeft.png");
+              image = ImageIO.read(url);
+            }
+            catch(Exception e){
+            }
+        }
+        else
+        {
+                try {
+                URL url = getClass().getResource("playerRight.png");
+              image = ImageIO.read(url);
+            }
+            catch(Exception e){
+            }
+        }
+
+/*  try{
       URL url = getClass().getResource("playerLeft.png");
       image = ImageIO.read(url);
     }
     catch(Exception e){
     }
+ */
   }
 
   public void setSpeed(int s){
@@ -49,8 +70,13 @@ public class Player extends MovingThing {
     this.client = client;
   }
 
-  public void move(String direction)
+	public String getDirection()
+	{
+		return direction;
+	}
+  public void move(String dir)
   {
+/*
     if (direction.equals("LEFT")) {
       setX(getX()-speed); 
       try{
@@ -76,7 +102,37 @@ public class Player extends MovingThing {
       setY(getY()+speed-1); 
     }
     this.direction = direction;
-  }
+*/
+
+	 if (dir.equals("LEFT")||dir.equals("RIGHT"))
+
+                direction = dir;
+    if (dir.equals("LEFT")) {
+      setX(getX()-speed);
+      try{
+        URL url = getClass().getResource("playerLeft.png");
+        image = ImageIO.read(url);
+      }
+      catch(Exception e){
+      }
+    }
+    else if (dir.equals("RIGHT")) {
+      setX(getX()+speed);
+      try{
+        URL url = getClass().getResource("playerRight.png");
+        image = ImageIO.read(url);
+      }
+      catch(Exception e){
+      }
+    }
+    else if (dir.equals("UP")) {
+      setY(getY()-speed+1);
+    }
+    else if (dir.equals("DOWN")) {
+      setY(getY()+speed-1);
+    }
+ 
+ }
 
   public void draw( Graphics window ){
     window.drawImage(image,getX(),getY(),getWidth(),getHeight(),null);
