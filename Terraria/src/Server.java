@@ -35,7 +35,11 @@ public class Server implements Runnable {
 		while(true) {
 			try {
 				Thread.currentThread().sleep(500);
-				globalMessage("BLOCKLIST: " + blockList.getBlockInfo().toString(), new ClientThread(), true);
+				if (blockList.getBlockInfo().size() == 0) {
+					globalMessage("BLOCKLIST: EMPTY", new ClientThread(), true);
+				} else {
+					globalMessage("BLOCKLIST: " + blockList.getBlockInfo().toString(), new ClientThread(), true);
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

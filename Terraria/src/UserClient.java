@@ -205,27 +205,32 @@ public class UserClient implements Runnable,Serializable {
 					} else if (s.contains("BLOCKLIST: ")) {
 
 						String bl = s.replace("BLOCKLIST: ", "");
-						List<Block> blockl = new ArrayList<Block>();
-						List<String> bsl = new ArrayList<String>();
-						bl = bl.replace("[", "");
-						bl = bl.replace("]", "");
-						bsl = Arrays.asList(bl.split(","));
-						for (String sb : bsl) {
-							String info = sb.replace("<>", ",");
-							info = info.replace(" ", "");
-							String[] infol = info.split(",");
-							int x = Integer.valueOf(infol[0]);
-							int y = Integer.valueOf(infol[1]);
-							int height = Integer.valueOf(infol[2]);
-							int width =Integer.valueOf(infol[3]);
-							String type =String.valueOf(infol[4]);
-							Block block = new Block(x, y, width, height, 2, type);
-							blockl.add(block);
-						}
-						blockList = new BlockType();
-						blockList.setList(blockl);
+						if (s.equalsIgnoreCase("EMPTY")) {
+							blockList = new BlockType();
+						} else {
+							List<Block> blockl = new ArrayList<Block>();
+							List<String> bsl = new ArrayList<String>();
+							bl = bl.replace("[", "");
+							bl = bl.replace("]", "");
+							bsl = Arrays.asList(bl.split(","));
+							for (String sb : bsl) {
+								String info = sb.replace("<>", ",");
+								info = info.replace(" ", "");
+								String[] infol = info.split(",");
+								int x = Integer.valueOf(infol[0]);
+								int y = Integer.valueOf(infol[1]);
+								int height = Integer.valueOf(infol[2]);
+								int width = Integer.valueOf(infol[3]);
+								String type = String.valueOf(infol[4]);
+								Block block = new Block(x, y, width, height, 2, type);
+								blockl.add(block);
+							}
 
-						System.out.println(blockList.getBlocks().size());
+							blockList = new BlockType();
+							blockList.setList(blockl);
+						}
+
+						//System.out.println(blockList.getBlocks().size());
 
 
 					} else if (s.contains("moved to") && !s.contains(":")) {
@@ -237,7 +242,6 @@ public class UserClient implements Runnable,Serializable {
 						int x = Integer.valueOf(position.split(",")[1]);
 						int y = Integer.valueOf(position.split(",")[2]);
 						String direction = String.valueOf(position.split(",")[3]);
-
 						boolean has = false;
 						for (DrawPlayer pl : players) {
 							URL url = getClass().getResource("playerRight.png");
