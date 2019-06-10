@@ -136,7 +136,7 @@ public class Server implements Runnable {
                 globalMessage("PLAYERINFO: " + name + "," + x + "," + y + "," + one + "," + two + "," + three, new ClientThread(), true);
 */
                 //System.out.println("PLAYERINFO: " + name + "," + x + "," + y + "," + one + "," + two + "," + three);
-                for (int i = 0; i < 200; i++) {
+                for (int i = 0; i < 1000; i++) {
                     output.println("PLAYERINFO: " + name + "," + x + "," + y + "," + one + "," + two + "," + three);
                 }
                 output.println("You have joined the Server! Welcome!!!");
