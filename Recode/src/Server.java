@@ -81,6 +81,7 @@ public class Server implements Runnable {
                 if (!pinf.exists()) {
                     try {
                         pinf.createNewFile();
+                        System.out.println("Created playerdata");
                         try {
                             FileReader freader = new FileReader(pinf);
                             BufferedReader br = new BufferedReader(freader);
