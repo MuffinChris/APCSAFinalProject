@@ -24,6 +24,34 @@ public class Player extends MovingThing implements Runnable {
     private List<DrawPlayer> players;
     private BlockType blockList;
     private BlockType inventoryList;
+    private int one;
+    private int two;
+    private int three;
+
+    public void setOne(int i) {
+        one = i;
+    }
+    public void setTwo(int i) {
+        two = i;
+    }
+    public void setThree(int i) {
+        three = i;
+    }
+    public int getOne() {
+        return one;
+    }
+
+    public int getTwo() {
+        return two;
+    }
+
+    public int getThree() {
+        return three;
+    }
+
+    public BlockType getInvList() {
+        return inventoryList;
+    }
 
     public Player(){
         this(10,10,10,10,10, "LEFT");
@@ -143,6 +171,8 @@ public class Player extends MovingThing implements Runnable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Thread t = new Thread(new PlayerInfoUpdater(this));
+        t.start();
     }
 
     public Graphics getWindow() {
@@ -221,6 +251,8 @@ public class Player extends MovingThing implements Runnable {
                 while (true) {
                     Scanner sockscan = new Scanner(socket.getInputStream());
                     String s = sockscan.nextLine();
+                    //System.out.println(s);
+
                     if (s.contains("Your Client ID")) {
                         id = Integer.valueOf(s.replace("Your Client ID is: ",""));
                     } else if (s.contains("CLIENT CLOSED: ")) {
@@ -247,6 +279,42 @@ public class Player extends MovingThing implements Runnable {
                             if (b.getX() == x && b.getY() == y) {
                                 blockList.remove(b);
                             }
+                        }
+                    } else if (s.contains("SERVERINFO: ")) {
+
+
+                    } else if (s.contains("PLAYERINFO: ")) {
+                        //System.out.println(s);
+                        s = s.replace("PLAYERINFO: ", "");
+                        String[] list = s.split(",");
+                        //System.out.println(list.toString());
+                        String name = String.valueOf(list[0]);
+                        //System.out.println(name + " " + getName());
+                        if (name.equals(getName())) {
+                            //System.out.println("we");
+                            inventoryList = new BlockType();
+                            int x = Integer.valueOf(list[1]);
+                            int y = Integer.valueOf(list[2]);
+                            if (x == -10 || y == -10) {
+                                x = this.getX();
+                                y = this.getY();
+                            } else {
+                                setX(x);
+                                setY(y);
+                            }
+                            one = Integer.valueOf(list[3]);
+                            two = Integer.valueOf(list[4]);
+                            three = Integer.valueOf(list[5]);
+                            for (int i = 0; i < one; i++) {
+                                inventoryList.add(new Block(50, 50, 50, 50, 2, "dirt"));
+                            }
+                            for (int i = 0; i < two; i++) {
+                                inventoryList.add(new Block(50, 50, 50, 50, 2, "stone"));
+                            }
+                            for (int i = 0; i < three; i++) {
+                                inventoryList.add(new Block(50, 50, 50, 50, 2, "wood"));
+                            }
+                            //System.out.println(x + " " + y + " " + one + " " + two + " " + three + " " + inventoryList.getBlockInfo());
                         }
                     } else if (s.contains("BLOCK PLACE: ")) {
                         s = s.replace("BLOCK PLACE: ", "");
@@ -327,7 +395,7 @@ public class Player extends MovingThing implements Runnable {
 
                         this.draw(window, direction, x, y, name);
                     } else {
-                        System.out.println(s);
+                        System.out.println(s + " out");
                     }
                 }
             }

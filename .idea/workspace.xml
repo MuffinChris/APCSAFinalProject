@@ -2,30 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5c1544b-57b7-42cf-9d32-b6d5339f62f0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Recode/Recode.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Recode/src/Block.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Recode/src/BlockType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Recode/src/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Recode/src/ClientThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Recode/src/DrawPlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Recode/src/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Recode/src/GameRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Recode/src/GameServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Recode/src/Moveable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Recode/src/MovingThing.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Recode/src/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Recode/src/Server.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Recode/src/PlayerInfoUpdater.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Terraria/src/Block.class" beforeDir="false" afterPath="$PROJECT_DIR$/Terraria/src/Block.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Terraria/src/BlockType.class" beforeDir="false" afterPath="$PROJECT_DIR$/Terraria/src/BlockType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Terraria/src/ClientThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/Terraria/src/ClientThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Terraria/src/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/Terraria/src/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Terraria/src/GameRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/Terraria/src/GameRunner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Terraria/src/GameServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/Terraria/src/GameServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Terraria/src/MovingThing.class" beforeDir="false" afterPath="$PROJECT_DIR$/Terraria/src/MovingThing.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Terraria/src/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/Terraria/src/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Terraria/src/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/Terraria/src/Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Terraria/src/UserClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/Terraria/src/UserClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recode/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Recode/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recode/src/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/Recode/src/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recode/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Recode/src/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recode/src/GameRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/Recode/src/GameRunner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recode/src/GameRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/Recode/src/GameRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recode/src/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/Recode/src/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recode/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/Recode/src/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recode/src/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/Recode/src/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recode/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Recode/src/Server.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/Terraria/bin/" />

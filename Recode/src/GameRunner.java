@@ -56,7 +56,8 @@ public class GameRunner extends JFrame implements Runnable {
             }
         }
         blockList = player.getBlockList();
-        Game theGame = new Game(WIDTH, HEIGHT, blockList,inventoryList, player);
+        inventoryList = player.getInvList();
+        Game theGame = new Game(WIDTH, HEIGHT, blockList,inventoryList, player, player.getOne(), player.getTwo(), player.getThree());
         ((Component)theGame).setFocusable(true);
 
         getContentPane().add(theGame);

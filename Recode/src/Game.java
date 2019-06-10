@@ -45,15 +45,15 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
     private MouseEvent mouseEvent;
     private boolean mouseClicked;
 
-    public Game(int width, int height, BlockType blocklist,BlockType inventorylist, Player p) {
+    public Game(int width, int height, BlockType blocklist,BlockType inventorylist, Player p, int one, int two, int three) {
 
-        numDirt = 0;
-        numStone = 0;
-        numWood = 0;
+        numDirt = one;
+        numStone = two;
+        numWood = three;
         blockVal = 0;
         screenWidth = width;
         screenHeight = height-23;
-        inventoryList = new BlockType();
+        inventoryList = inventorylist;
 
         setBackground(Color.black);
         keys = new boolean[8];
@@ -111,7 +111,10 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
         player.draw(graphToBack);
         blockList = player.getBlockList();
         blockList.drawEmAll(graphToBack);
-
+        BlockType inventoryList = player.getInvList();
+        if (!(inventoryList instanceof BlockType)) {
+            return;
+        }
         numDirt=0;
         for (int i = 0; i < inventoryList.size();i++)
         {
@@ -256,6 +259,9 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
 
 
         player.drawOthers();
+        player.setOne(numDirt);
+        player.setTwo(numStone);
+        player.setThree(numWood);
         twoDGraph.drawImage(back, null, 0, 0);
     }
 
@@ -295,7 +301,7 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
             }
         }
     }
-    public void actionPerformed(ActionEvent a)
+    /*public void actionPerformed(ActionEvent a)
     {
         if ("click".equals(a.getActionCommand()))
         {
@@ -326,7 +332,7 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
                 e.printStackTrace();
             }
         }
-    }
+    }*/
 
 
     public void mouseEntered(MouseEvent e) {}
