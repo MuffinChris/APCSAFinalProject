@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5c1544b-57b7-42cf-9d32-b6d5339f62f0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Recode/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Recode/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Recode/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Recode/src/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recode/src/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/Recode/src/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recode/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Recode/src/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recode/src/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/Recode/src/Server.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/Terraria/bin/" />
@@ -101,8 +102,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Terraria/src/GameServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="30" selection-start-line="30" selection-end-line="30" />
+            <state relative-caret-position="405">
+              <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -193,7 +194,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="15" />
     <option name="y" value="30" />
     <option name="width" value="1890" />
@@ -287,7 +288,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="7" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4991119" visible="true" weight="0.254251" />
@@ -518,8 +519,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Terraria/src/GameServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        <state relative-caret-position="405">
+          <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
         </state>
       </provider>
     </entry>

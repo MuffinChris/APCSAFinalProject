@@ -278,7 +278,14 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
                     blockType = "dirt";
                     Block place = new Block(e.getX(), e.getY(), 50, 50, speed, blockType);
                     //blockList.add(place);
-                    inventoryList.remove(inventoryList.get(0));
+                    for (int i = inventoryList.size() - 1; i>=0; i--) {
+                        Block b = inventoryList.get(i);
+                        if (b.getType().equals(blockType)) {
+                            inventoryList.remove(b);
+                            break;
+                        }
+                    }
+                    //inventoryList.remove(place);
                     numDirt--;
                     placeBlock(place);
                 }
@@ -286,7 +293,13 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
                     blockType = "stone";
                     Block place = new Block(e.getX(), e.getY(), 50, 50, speed, blockType);
                     //blockList.add(place);
-                    inventoryList.remove(inventoryList.get(0));
+                    for (int i = inventoryList.size() - 1; i>=0; i--) {
+                        Block b = inventoryList.get(i);
+                        if (b.getType().equals(blockType)) {
+                            inventoryList.remove(b);
+                            break;
+                        }
+                    }
                     numStone--;
                     placeBlock(place);
                 }
@@ -294,7 +307,13 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
                     blockType = "wood";
                     Block place = new Block(e.getX(), e.getY(), 50, 50, speed, blockType);
                     //blockList.add(place);
-                    inventoryList.remove(inventoryList.get(0));
+                    for (int i = inventoryList.size() - 1; i>=0; i--) {
+                        Block b = inventoryList.get(i);
+                        if (b.getType().equals(blockType)) {
+                            inventoryList.remove(b);
+                            break;
+                        }
+                    }
                     numWood--;
                     placeBlock(place);
                 }
