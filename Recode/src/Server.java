@@ -75,8 +75,6 @@ public class Server implements Runnable {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 name = reader.readLine();
                 System.out.println(name + " joined the Server.");
-                //File file = new File(".");
-                //for(String fileNames : file.list()) System.out.println(fileNames);
                 File pinf = new File("data/" + name + ".txt");
                 if (!pinf.exists()) {
                     try {
@@ -118,24 +116,6 @@ public class Server implements Runnable {
                 System.out.println(">> Created new Client Thread (" + w.getClient().getID() + ")");
                 PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
                 output.println("BLOCKLIST: " + blockList.getBlockInfo().toString());
-                /*globalMessage("PLAYERINFO: " + name + "," + x + "," + y + "," + one + "," + two + "," + three, new ClientThread(), true);
-                globalMessage("PLAYERINFO: " + name + "," + x + "," + y + "," + one + "," + two + "," + three, new ClientThread(), true);
-                globalMessage("PLAYERINFO: " + name + "," + x + "," + y + "," + one + "," + two + "," + three, new ClientThread(), true);
-                globalMessage("PLAYERINFO: " + name + "," + x + "," + y + "," + one + "," + two + "," + three, new ClientThread(), true);
-                globalMessage("PLAYERINFO: " + name + "," + x + "," + y + "," + one + "," + two + "," + three, new ClientThread(), true);
-                globalMessage("PLAYERINFO: " + name + "," + x + "," + y + "," + one + "," + two + "," + three, new ClientThread(), true);
-                globalMessage("PLAYERINFO: " + name + "," + x + "," + y + "," + one + "," + two + "," + three, new ClientThread(), true);
-                globalMessage("PLAYERINFO: " + name + "," + x + "," + y + "," + one + "," + two + "," + three, new ClientThread(), true);
-                globalMessage("PLAYERINFO: " + name + "," + x + "," + y + "," + one + "," + two + "," + three, new ClientThread(), true);
-                globalMessage("PLAYERINFO: " + name + "," + x + "," + y + "," + one + "," + two + "," + three, new ClientThread(), true);
-                globalMessage("PLAYERINFO: " + name + "," + x + "," + y + "," + one + "," + two + "," + three, new ClientThread(), true);
-                globalMessage("PLAYERINFO: " + name + "," + x + "," + y + "," + one + "," + two + "," + three, new ClientThread(), true);
-                globalMessage("PLAYERINFO: " + name + "," + x + "," + y + "," + one + "," + two + "," + three, new ClientThread(), true);
-                globalMessage("PLAYERINFO: " + name + "," + x + "," + y + "," + one + "," + two + "," + three, new ClientThread(), true);
-                globalMessage("PLAYERINFO: " + name + "," + x + "," + y + "," + one + "," + two + "," + three, new ClientThread(), true);
-                globalMessage("PLAYERINFO: " + name + "," + x + "," + y + "," + one + "," + two + "," + three, new ClientThread(), true);
-*/
-                //System.out.println("PLAYERINFO: " + name + "," + x + "," + y + "," + one + "," + two + "," + three);
                 for (int i = 0; i < 10000; i++) {
                     output.println("PLAYERINFO: " + name + "," + x + "," + y + "," + one + "," + two + "," + three);
                 }
@@ -154,7 +134,6 @@ public class Server implements Runnable {
         if (open) {
             PrintWriter outputCT = null;
             if (s.contains("BLOCK REMOVE: ")) {
-                //System.out.println(s);
                 s = s.replace("BLOCK REMOVE: ", "");
                 String[] list = s.split(",");
                 int x = Integer.valueOf(list[0]);
@@ -166,32 +145,26 @@ public class Server implements Runnable {
                     }
                 }
             } else if (s.contains("SERVERINFO: ")) {
-                //System.out.println(s);
                 s = s.replace("SERVERINFO: ", "");
                 String[] list = s.split(",");
-                //System.out.println(list.toString());
                 String name = String.valueOf(list[0]);
-                //System.out.println(name + " " + getName());
-                    //System.out.println("we");
-                    int x = Integer.valueOf(list[1]);
-                    int y = Integer.valueOf(list[2]);
-                    int one = Integer.valueOf(list[3]);
-                    int two = Integer.valueOf(list[4]);
-                    int three = Integer.valueOf(list[5]);
-
+                int x = Integer.valueOf(list[1]);
+                int y = Integer.valueOf(list[2]);
+                int one = Integer.valueOf(list[3]);
+                int two = Integer.valueOf(list[4]);
+                int three = Integer.valueOf(list[5]);
                 try {
                     File pinf = new File("data/" + name + ".txt");
                     pinf.delete();
                     pinf.createNewFile();
-                        FileWriter writer = new FileWriter(pinf);
-                        BufferedWriter bw = new BufferedWriter(writer);
-                        bw.write(name + "," + x + "," + y  + "," + one + "," + two + "," + three);
-                        bw.flush();
-                        bw.close();
+                    FileWriter writer = new FileWriter(pinf);
+                    BufferedWriter bw = new BufferedWriter(writer);
+                    bw.write(name + "," + x + "," + y  + "," + one + "," + two + "," + three);
+                    bw.flush();
+                    bw.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                System.out.println(name + "," + x + "," + y  + "," + one + "," + two + "," + three);
             } else if (s.contains("BLOCK PLACE: ")) {
                 s = s.replace("BLOCK PLACE: ", "");
                 String[] list = s.split(",");

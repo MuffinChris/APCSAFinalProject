@@ -256,8 +256,6 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
                 }
             }
         }
-
-
         player.drawOthers();
         player.setOne(numDirt);
         player.setTwo(numStone);
@@ -277,7 +275,6 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
                 if (blockVal == 1 && numDirt > 0) {
                     blockType = "dirt";
                     Block place = new Block(e.getX(), e.getY(), 50, 50, speed, blockType);
-                    //blockList.add(place);
                     for (int i = inventoryList.size() - 1; i>=0; i--) {
                         Block b = inventoryList.get(i);
                         if (b.getType().equals(blockType)) {
@@ -285,14 +282,12 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
                             break;
                         }
                     }
-                    //inventoryList.remove(place);
                     numDirt--;
                     placeBlock(place);
                 }
                 if (blockVal == 2 && numStone > 0) {
                     blockType = "stone";
                     Block place = new Block(e.getX(), e.getY(), 50, 50, speed, blockType);
-                    //blockList.add(place);
                     for (int i = inventoryList.size() - 1; i>=0; i--) {
                         Block b = inventoryList.get(i);
                         if (b.getType().equals(blockType)) {
@@ -306,7 +301,6 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
                 if (blockVal == 3 && numWood > 0) {
                     blockType = "wood";
                     Block place = new Block(e.getX(), e.getY(), 50, 50, speed, blockType);
-                    //blockList.add(place);
                     for (int i = inventoryList.size() - 1; i>=0; i--) {
                         Block b = inventoryList.get(i);
                         if (b.getType().equals(blockType)) {
@@ -320,40 +314,6 @@ public class Game extends Canvas implements KeyListener, MouseListener, Runnable
             }
         }
     }
-    /*public void actionPerformed(ActionEvent a)
-    {
-        if ("click".equals(a.getActionCommand()))
-        {
-            try (FileOutputStream fos = new FileOutputStream("blockList.data");
-                 ObjectOutputStream oos = new ObjectOutputStream(fos))
-            {
-
-                oos.writeObject(blockList);
-            }catch (IOException e){
-                e.printStackTrace();
-            }
-
-
-            try(FileOutputStream fos = new FileOutputStream("inventoryList.data");
-                ObjectOutputStream oos = new ObjectOutputStream(fos))
-            {
-                oos.writeObject(inventoryList);
-            }
-            catch(IOException e){
-                e.printStackTrace();
-            }
-            try(FileOutputStream fos = new FileOutputStream("player.data");
-                ObjectOutputStream oos = new ObjectOutputStream(fos))
-            {
-                oos.writeObject(player);
-            }
-            catch(IOException e){
-                e.printStackTrace();
-            }
-        }
-    }*/
-
-
     public void mouseEntered(MouseEvent e) {}
     public void mouseExited(MouseEvent e) {}
     public void mousePressed(MouseEvent e) {}

@@ -34,18 +34,10 @@ public class GameRunner extends JFrame implements Runnable {
         setSize(WIDTH, HEIGHT);
 
         JTextArea textArea = new JTextArea();
-        //TerrariaGame TGame = new TerrariaGame();
-        //((Component)TGame).setFocusable(true);
-        //Thread world = new Thread(TGame);
-        //world.start();
-
         getContentPane().add(textArea);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(WIDTH,HEIGHT);
-    /*Thread t = new Thread(this);
-    t.start();*/
-        //client = new UserClient();
         player = new Player(0, HEIGHT-175-23, 50, 50, 2, "LEFT");
         while (player.getBlockList() == null) {
             System.out.println("Connecting...");

@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d5c1544b-57b7-42cf-9d32-b6d5339f62f0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/Recode/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Recode/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Recode/src/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/Recode/src/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Recode/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Recode/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Recode/src/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/Recode/src/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recode/src/GameRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/Recode/src/GameRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recode/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Recode/src/Server.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/Terraria/bin/" />
@@ -194,7 +194,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="15" />
     <option name="y" value="30" />
     <option name="width" value="1890" />
@@ -288,7 +288,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4991119" visible="true" weight="0.254251" />
